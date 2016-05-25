@@ -21,6 +21,7 @@ function user_registered($email,$password) {
     }
     else{
 
+        echo "<script>alert('Test 2');</script>";
 
 
         //select all values from database using the entered values as filter
