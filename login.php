@@ -3,6 +3,13 @@
 include("dbConnection.php");
 include("functions.php");
 
+session_start();
+if(isset($_SESSION['email'])){
+    header("Location: home.php");
+}
+
+
+
 //GET when accessed through URL
 if($_SERVER['REQUEST_METHOD']==='GET'){
     //check if session is set
