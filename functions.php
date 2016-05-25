@@ -36,6 +36,8 @@ function user_registered($email,$password) {
 
         if(mysqli_stmt_fetch($stmt)){	//if the sql query returns a value
             return TRUE; 	//indicate that a value was returned, and user exists in database
+            echo "<script>alert('Test 3');</script>";
+
         }
         else{
             return FALSE; //indicate a value wasn't returned, and user doesn't exist in database
