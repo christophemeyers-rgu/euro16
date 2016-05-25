@@ -30,7 +30,6 @@ else if($_SERVER['REQUEST_METHOD']==='POST'){	//Post is used when the form is su
         header("Location: home.php");	//send admin to adminhome.php
     }
     else{
-        //show_index_page();	//This isn't necessary anymore
         echo "<script>alert('Invalid user details');</script>";
     }
 }
