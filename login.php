@@ -13,7 +13,7 @@ if(isset($_SESSION['email'])){
 //GET when accessed through URL
 if($_SERVER['REQUEST_METHOD']==='GET'){
     //check if session is set
-    session_start();
+//    session_start();
     if(isset($_SESSION["email"])){
         //send user to adminhome.php
         header("Location: home.php");
@@ -25,7 +25,7 @@ else if($_SERVER['REQUEST_METHOD']==='POST'){	//Post is used when the form is su
     $email=$_POST['email'];
     $password=$_POST['password'];
     if(user_registered($email,$password)){	//See function
-        session_start();	//start the session
+//        session_start();	//start the session
         $_SESSION["email"]=$email;	//assign the admin email address to the session
         header("Location: home.php");	//send admin to adminhome.php
     }
@@ -55,7 +55,7 @@ else if($_SERVER['REQUEST_METHOD']==='POST'){	//Post is used when the form is su
         <br>
         <input type="password" placeholder="Password" name="password">
         <br>
-        <input type="submit" value="Login">
+        <button type="submit">Login</button>
     </form>
 
 
