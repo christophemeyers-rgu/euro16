@@ -28,7 +28,7 @@ function user_registered($email,$password) {
 					FROM users
 					WHERE email = ? AND password = ?";
         $stmt = $db->prepare($query);
-        $stmt->bind_param("ss",$_POST['u'],$_POST['p']);
+        $stmt->bind_param("ss",$email,$password);
         $stmt->execute() or die("Error: ".$query."<br>".$db->error);
 
 
