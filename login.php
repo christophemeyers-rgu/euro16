@@ -43,7 +43,7 @@ else if($_SERVER['REQUEST_METHOD']==='POST'){	//Post is used when the form is su
 </head>
 <body>
 
-    <form action="home.php" method="post">
+    <form action="login.php" method="post">
         <input type="text" placeholder="Email Address" name="email">
         <br>
         <input type="password" placeholder="Password" name="password">
