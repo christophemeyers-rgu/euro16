@@ -55,9 +55,8 @@ else if($_SERVER['REQUEST_METHOD']==='POST'){	//Post is used when the form is su
         <br>
         <input type="password" placeholder="Password" name="password">
         <br>
-        <button type="submit">Login</button>
+        <input type="submit" value="Login">
     </form>
-
 
 
 </body>

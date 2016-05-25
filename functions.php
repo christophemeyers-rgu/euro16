@@ -6,7 +6,7 @@
  * Time: 15:02
  */
 
-include("dbConnection.php");
+//include("dbConnection.php");
 
 
 function user_registered($email,$password) {
