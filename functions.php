@@ -6,6 +6,9 @@
  * Time: 15:02
  */
 
+include("dbConnection.php");
+
+
 function user_registered($email,$password) {
     //test to discover if the user is already in the DB
     //to do that, we can find out if the email address already exists in any row

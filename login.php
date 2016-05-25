@@ -17,7 +17,7 @@ else if($_SERVER['REQUEST_METHOD']==='POST'){	//Post is used when the form is su
     //read input details from index.php
     $email=$_POST['u'];
     $password=$_POST['p'];
-    if(user_registered($email,$password)){	//See function below
+    if(user_registered($email,$password)){	//See function
         session_start();	//start the session
         $_SESSION["email"]=$email;	//assign the admin email address to the session
         header("Location: home.php");	//send admin to adminhome.php
