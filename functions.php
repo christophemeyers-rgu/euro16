@@ -13,7 +13,7 @@ function user_registered($email,$password) {
     //test to discover if the user is already in the DB
     //to do that, we can find out if the email address already exists in any row
 
-    include("db_connection.php");
+//    include("db_connection.php");
     echo "<script>alert('Test 1');</script>";
 
     if($db->connect_errno){		//check if there was a connection error and respond accordingly
