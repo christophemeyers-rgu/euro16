@@ -14,7 +14,7 @@ function user_registered($email,$password) {
     //to do that, we can find out if the email address already exists in any row
 
     include("db_connection.php");
-
+    echo "<script>alert('Test 1');</script>";
 
     if($db->connect_errno){		//check if there was a connection error and respond accordingly
         die('Connection failed:'.connect_error);
