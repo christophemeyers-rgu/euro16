@@ -45,3 +45,9 @@ main{
     display: -webkit-flex;
     flex-direction: row;
 }
+
+#login{
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 80px;
+}
