@@ -25,6 +25,9 @@ if(!isset($_SESSION['email'])){
 </head>
 <body>
 
+    <img src="assets/images/YoungHappyPlatini.jpg" id="leftImage">
+
+
     <nav>
         <ul>
             <li> <a href="#">Home</a> </li>

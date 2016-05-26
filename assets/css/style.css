@@ -53,3 +53,9 @@ main{
     margin-left: auto;
     margin-top: 80px;
 }
+
+#leftImage{
+    float: left;
+    margin: 10px 10px 10px 0;
+
+}
