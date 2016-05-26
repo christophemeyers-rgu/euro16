@@ -56,7 +56,7 @@ else if($_SERVER['REQUEST_METHOD']==='POST'){	//Post is used when the form is su
 </head>
 <body>
 
-    <img src="assets/images/YoungHappyPlatini.jpg" id="leftImage">
+<!--    <img src="assets/images/YoungHappyPlatini.jpg" id="leftImage">-->
 
     <form id="login" action="login.php" method="post">
         <input type="text" placeholder="Email Address" name="email">

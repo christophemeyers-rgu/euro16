@@ -25,14 +25,14 @@ if(!isset($_SESSION['email'])){
 </head>
 <body>
 
-    <img src="assets/images/YoungHappyPlatini.jpg" id="leftImage">
+<!--    <img src="assets/images/YoungHappyPlatini.jpg" id="leftImage">-->
 
     <header>
 
-        <h1><?php
-                getUserName($_SESSION["email"]);
-            ?>
-        </h1>
+        <!--<h1><?php
+/*                getUserName($_SESSION["email"]);
+            */?>
+        </h1>-->
 
         <nav>
             <ul>
