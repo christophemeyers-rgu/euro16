@@ -33,6 +33,7 @@ if(!isset($_SESSION['email'])){
                 <li> <a href="#">Home</a> </li>
                 <li> <a href="#">Groups</a> </li>
                 <li> <a href="#">Matches</a></li>
+                <li> <a href="#">Participating Nations</a> </li>
                 <li> <a href="logout.php">Logout</a> </li>
             </ul>
         </nav>
