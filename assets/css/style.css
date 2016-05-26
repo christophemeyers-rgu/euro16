@@ -47,6 +47,7 @@ main{
 }
 
 #login{
+    max-width: 100%;
     background-color: aqua;
     margin-right: auto;
     margin-left: auto;
