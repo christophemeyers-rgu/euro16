@@ -23,3 +23,12 @@ a{
 a:hover{
     color: #ee393b;
 }
+
+main{
+    max-width: 650px;
+    margin-right: auto;
+    margin-left: auto;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: row;
+}
