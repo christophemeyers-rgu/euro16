@@ -25,18 +25,13 @@ a:hover{
 }
 
 header{
-    max-width: 650px;
-    margin-right: auto;
-    margin-left: auto;
-}
-
-
-nav{
     background-color: darkseagreen;
     max-width: 650px;
     margin-right: auto;
     margin-left: auto;
 }
+
+
 
 main{
     background-color: hotpink;

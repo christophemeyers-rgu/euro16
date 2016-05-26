@@ -27,15 +27,17 @@ if(!isset($_SESSION['email'])){
 
     <img src="assets/images/YoungHappyPlatini.jpg" id="leftImage">
 
+    <header>
+        <nav>
+            <ul>
+                <li> <a href="#">Home</a> </li>
+                <li> <a href="#">Groups</a> </li>
+                <li> <a href="#">Matches</a></li>
+                <li> <a href="logout.php">Logout</a> </li>
+            </ul>
+        </nav>
+    </header>
 
-    <nav>
-        <ul>
-            <li> <a href="#">Home</a> </li>
-            <li> <a href="#">Groups</a> </li>
-            <li> <a href="#">Matches</a></li>
-            <li> <a href="logout.php">Logout</a> </li>
-        </ul>
-    </nav>
 
     <main>
         <p>Hello my friend.
