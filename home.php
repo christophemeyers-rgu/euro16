@@ -18,6 +18,16 @@ if(!isset($_SESSION['email'])){
     <title>Home</title>
 </head>
 <body>
+
+    <nav>
+        <ul>
+            <li> <a href="#">Home</a> </li>
+            <li> <a href="#">Groups</a> </li>
+            <li> <a href="#">Matches</a></li>
+        </ul>
+    </nav>
+
+
     Hello my friend.
 </body>
 </html>
