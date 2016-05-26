@@ -28,6 +28,14 @@ if(!isset($_SESSION['email'])){
     <img src="assets/images/YoungHappyPlatini.jpg" id="leftImage">
 
     <header>
+
+        <h1> Welcome
+            <?php
+                getUserName($_SESSION["email"]);
+            ?>
+            !
+        </h1>
+
         <nav>
             <ul>
                 <li> <a href="#">Home</a> </li>

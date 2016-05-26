@@ -11,7 +11,7 @@
 
 
 
-function user_registered($email,$password) {
+function userRegistered($email,$password) {
     //test to discover if the user is already in the DB
     //to do that, we can find out if the email address already exists in any row
 
@@ -57,4 +57,31 @@ function user_registered($email,$password) {
         $db->close(); // Closing Connection
     }
 
+}
+
+function getUserName($email){
+
+//    include("db_connection.php");   //connect to database
+
+    $db = new MySQLi(
+        'ap-cdbr-azure-east-c.cloudapp.net', //server or host address
+        'b27f975a706fe7', //username for connecting to database
+        '078b0d65', //user's password
+        'meyerseuro16bets' //database being connected to
+    );
+
+    if($db->connect_errno){
+        die('Connectfailed['.$db->connect_error.']');   //if connection fails, return error
+    }
+
+    $namequery = "SELECT firstname, surname FROM users WHERE email='$email'";  //query for getting name
+
+    $result = $db->query($namequery);
+
+    $row = $result->fetch_array();
+
+    $firstname = $row['firstname'];
+    $surname = $row['surname'];
+
+    echo "{$firstname} {$surname}";   //the function prints the name
 }
