@@ -33,7 +33,11 @@ if(!isset($_SESSION['email'])){
         </ul>
     </nav>
 
+    <main>
+        <p>Hello my friend.
+        This is how this is going to work:
+        blablabla rules blabla.</p>
+    </main>
 
-    Hello my friend.
 </body>
 </html>
