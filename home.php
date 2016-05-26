@@ -29,11 +29,9 @@ if(!isset($_SESSION['email'])){
 
     <header>
 
-        <h1> Welcome
-            <?php
+        <h1><?php
                 getUserName($_SESSION["email"]);
             ?>
-            !
         </h1>
 
         <nav>
