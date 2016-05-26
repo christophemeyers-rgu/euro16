@@ -44,6 +44,14 @@ else if($_SERVER['REQUEST_METHOD']==='POST'){	//Post is used when the form is su
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="assets/css/unsemantic-grid-responsive-tablet.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+
+
+
     <title>Login</title>
 </head>
 <body>
