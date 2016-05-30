@@ -110,11 +110,7 @@ if(!isset($_SESSION['email'])){
     </table>
 
 
-    <img src="assets/images/flags/Albania.jpg" class="Flag">
-    <img src="assets/images/flags/Northern_Ireland.jpg" class="Flag">
-    <?php
-    getFlag(2);
-    ?>
+
 </main>
 
 </body>
