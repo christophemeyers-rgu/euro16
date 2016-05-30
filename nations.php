@@ -29,7 +29,7 @@ if(!isset($_SESSION['email'])){
     <link rel="stylesheet" href="assets/css/style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
 
-    <title>Home</title>
+    <title>Nations</title>
 </head>
 <body>
 
