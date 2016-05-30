@@ -52,9 +52,8 @@ if(!isset($_SESSION['email'])){
 
 
 <main>
-    <p>Hello my friend.
-        This is how this is going to work:
-        blablabla rules blabla.</p>
+    <img src="assets/flags/Albania.jpg" class="Flag">
+    <img src="assets/flags/Northern_Ireland.jpg" class="Flag">
 </main>
 
 </body>
