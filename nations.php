@@ -1,5 +1,10 @@
 <?php
-
+/**
+ * Created by PhpStorm.
+ * User: Christophe
+ * Date: 30/05/2016
+ * Time: 18:48
+ */
 
 session_start();
 if(!isset($_SESSION['email'])){
@@ -27,30 +32,30 @@ if(!isset($_SESSION['email'])){
 
 <!--    <img src="assets/images/YoungHappyPlatini.jpg" id="leftImage">-->
 
-    <header>
+<header>
 
-        <!--<h1><?php
-/*                getUserName($_SESSION["email"]);
-            */?>
+    <!--<h1><?php
+    /*                getUserName($_SESSION["email"]);
+                */?>
         </h1>-->
 
-        <nav>
-            <ul>
-                <li> <a href="#">Home</a> </li>
-                <li> <a href="#">Groups</a> </li>
-                <li> <a href="#">Matches</a></li>
-                <li> <a href="nations.php">Participating Nations</a> </li>
-                <li> <a href="logout.php">Logout</a> </li>
-            </ul>
-        </nav>
-    </header>
+    <nav>
+        <ul>
+            <li> <a href="#">Home</a> </li>
+            <li> <a href="#">Groups</a> </li>
+            <li> <a href="#">Matches</a></li>
+            <li> <a href="nations.php">Participating Nations</a> </li>
+            <li> <a href="logout.php">Logout</a> </li>
+        </ul>
+    </nav>
+</header>
 
 
-    <main>
-        <p>Hello my friend.
+<main>
+    <p>Hello my friend.
         This is how this is going to work:
         blablabla rules blabla.</p>
-    </main>
+</main>
 
 </body>
 </html>
