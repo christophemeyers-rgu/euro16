@@ -36,7 +36,7 @@ if(!isset($_SESSION['email'])){
 
         <nav>
             <ul>
-                <li> <a href="#">Home</a> </li>
+                <li> <a href="home.php">Home</a> </li>
                 <li> <a href="#">Groups</a> </li>
                 <li> <a href="#">Matches</a></li>
                 <li> <a href="nations.php">Participating Nations</a> </li>
