@@ -66,13 +66,13 @@ if(!isset($_SESSION['email'])){
 
     echo "This works";
 
-    if(mysqli_fetch_array($result)>0){
+    if(mysqli_num_rows($result)>0){
 
         $counter = 0;
 
         echo "This also works.";
 
-        while($row = mysqli_fetch_row($result)){
+        while($row = mysqli_fetch_array($result)){
 
             $counter++;
 
@@ -88,7 +88,7 @@ if(!isset($_SESSION['email'])){
 
                 <td>
                     <?php
-                    echo '<img src="assets/images/flags/'.$row['nationName'].'.jpg" class="Flag">';
+                    getFlag($row["nationID"]);
                     ?>
                 </td>
 
