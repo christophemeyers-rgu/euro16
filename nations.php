@@ -6,6 +6,9 @@
  * Time: 18:48
  */
 
+include "functions.php";
+
+
 session_start();
 if(!isset($_SESSION['email'])){
     header("Location: login.php");
