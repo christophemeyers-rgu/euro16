@@ -64,17 +64,13 @@ if(!isset($_SESSION['email'])){
 
     $result = getAllNations();
 
-    echo "This works";
 
     if(mysqli_num_rows($result)>0){
 
-        $counter = 0;
 
-        echo "This also works.";
 
         while($row = mysqli_fetch_array($result)){
 
-            $counter++;
 
             ?>
 
