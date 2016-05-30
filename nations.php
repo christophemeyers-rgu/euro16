@@ -52,8 +52,8 @@ if(!isset($_SESSION['email'])){
 
 
 <main>
-    <img src="assets/flags/Albania.jpg" class="Flag">
-    <img src="assets/flags/Northern_Ireland.jpg" class="Flag">
+    <img src="assets/images/flags/Albania.jpg" class="Flag">
+    <img src="assets/images/flags/Northern_Ireland.jpg" class="Flag">
 </main>
 
 </body>
