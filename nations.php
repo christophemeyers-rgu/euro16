@@ -52,6 +52,55 @@ if(!isset($_SESSION['email'])){
 
 
 <main>
+
+    <table>
+
+    <?php
+
+    $result = getAllNations();
+
+    if(mysqli_fetch_array($result)>0){
+
+        $counter = 0;
+
+        while($row = mysqli_fetch_row($result)){
+
+            $counter++;
+
+            ?>
+
+            <tr>
+
+                <td>
+                    <?php
+                        echo $counter.".";
+                    ?>
+                </td>
+
+                <td>
+                    <?php
+                    echo '<img src="'.$row['nationName'].' class="Flag">';
+                    ?>
+                </td>
+
+                <td>
+                    <?php
+                    echo $row['nationName'];
+                    ?>
+                </td>
+
+
+
+            </tr>
+
+            <?php
+        }
+    }
+    ?>
+
+    </table>
+
+
     <img src="assets/images/flags/Albania.jpg" class="Flag">
     <img src="assets/images/flags/Northern_Ireland.jpg" class="Flag">
 </main>

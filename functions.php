@@ -83,5 +83,29 @@ function getUserName($email){
     $firstname = $row['firstname'];
     $surname = $row['surname'];
 
+    $db->close();
+
     echo "{$firstname} {$surname}";   //the function prints the name
+}
+
+function getAllNations(){
+
+    $db = new MySQLi(
+        'ap-cdbr-azure-east-c.cloudapp.net', //server or host address
+        'b27f975a706fe7', //username for connecting to database
+        '078b0d65', //user's password
+        'meyerseuro16bets' //database being connected to
+    );
+
+    if($db->connect_errno){
+        die('Connectfailed['.$db->connect_error.']');   //if connection fails, return error
+    }
+
+    $nationquery = "SELECT * FROM nations";
+
+    $result = $db->query($nationquery);
+
+    $db->close();
+
+    return $result;
 }
