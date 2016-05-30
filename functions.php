@@ -74,7 +74,9 @@ function getUserName($email){
         die('Connectfailed['.$db->connect_error.']');   //if connection fails, return error
     }
 
-    $namequery = "SELECT firstname, surname FROM users WHERE email='$email'";  //query for getting name
+    $namequery = "SELECT firstname, surname
+                  FROM users
+                  WHERE email='$email'";  //query for getting name
 
     $result = $db->query($namequery);
 
@@ -101,11 +103,18 @@ function getAllNations(){
         die('Connectfailed['.$db->connect_error.']');   //if connection fails, return error
     }
 
-    $nationquery = "SELECT * FROM nations";
+    $nationquery = "SELECT *
+                    FROM nations";
 
     $result = $db->query($nationquery);
 
     $db->close();
 
     return $result;
+}
+
+function getFlag($name){
+
+
+
 }

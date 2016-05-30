@@ -82,7 +82,7 @@ if(!isset($_SESSION['email'])){
 
                 <td>
                     <?php
-                        echo $counter.".";
+                        echo $row["nationID"].".";
                     ?>
                 </td>
 
