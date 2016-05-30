@@ -56,5 +56,5 @@ main{
 }
 
 .Flag{
-    width: 24px;
+    max-height: 12pt;
 }
