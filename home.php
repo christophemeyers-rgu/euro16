@@ -25,7 +25,6 @@ if(!isset($_SESSION['email'])){
 </head>
 <body>
 
-<!--    <img src="assets/images/YoungHappyPlatini.jpg" id="leftImage">-->
 
     <header>
 
@@ -47,9 +46,16 @@ if(!isset($_SESSION['email'])){
 
 
     <main>
-        <p>Hello my friend.
-        This is how this is going to work:
-        blablabla rules blabla.</p>
+
+
+        <div class="grid-100 tablet-grid-100 mobile-grid-100">
+
+            <p>Hello my friend.
+                This is how this is going to work:
+                blablabla rules blabla.</p>
+
+        </div>
+
     </main>
 
 </body>

@@ -56,56 +56,61 @@ if(!isset($_SESSION['email'])){
 
 <main>
 
-    <h3>List of all nations</h3>
-
-    <table>
-
-    <?php
-
-    $result = getAllNations();
 
 
-    if(mysqli_num_rows($result)>0){
+    <div class="grid-100 tablet-grid-100 mobile-grid-100">
 
 
+        <h3>List of all nations</h3>
 
-        while($row = mysqli_fetch_array($result)){
+        <table>
+
+        <?php
+
+        $result = getAllNations();
 
 
-            ?>
-
-            <tr>
-
-                <td>
-                    <?php
-                        echo $row["nationID"].".";
-                    ?>
-                </td>
-
-                <td>
-                    <?php
-                    getFlag($row["nationID"]);
-                    ?>
-                </td>
-
-                <td>
-                    <?php
-                    echo $row['nationName'];
-                    ?>
-                </td>
+        if(mysqli_num_rows($result)>0){
 
 
 
-            </tr>
+            while($row = mysqli_fetch_array($result)){
 
-            <?php
+
+                ?>
+
+                <tr>
+
+                    <td>
+                        <?php
+                            echo $row["nationID"].".";
+                        ?>
+                    </td>
+
+                    <td>
+                        <?php
+                        getFlag($row["nationID"]);
+                        ?>
+                    </td>
+
+                    <td>
+                        <?php
+                        echo $row['nationName'];
+                        ?>
+                    </td>
+
+
+
+                </tr>
+
+                <?php
+            }
         }
-    }
-    ?>
+        ?>
 
-    </table>
+        </table>
 
-
+    </div>
 
 </main>
 
