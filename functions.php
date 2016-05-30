@@ -113,7 +113,80 @@ function getAllNations(){
     return $result;
 }
 
-function getFlag($name){
+function getFlag($id){
+
+    if($id==1){
+        echo "<img src='assets/images/flags/Albania.jpg' class='Flag'>";
+    }
+    elseif($id==2){
+        echo "<img src='assets/images/flags/Austria.jpg' class='Flag'>";
+    }
+    elseif($id==3){
+        echo "<img src='assets/images/flags/Belgium.jpg' class='Flag'>";
+    }
+    elseif($id==4){
+        echo "<img src='assets/images/flags/Croatia.jpg' class='Flag'>";
+    }
+    elseif($id==5){
+        echo "<img src='assets/images/flags/Czech_Republic.jpg' class='Flag'>";
+    }
+    elseif($id==6){
+        echo "<img src='assets/images/flags/England.jpg' class='Flag'>";
+    }
+    elseif($id==7){
+        echo "<img src='assets/images/flags/France.jpg' class='Flag'>";
+    }
+    elseif($id==8){
+        echo "<img src='assets/images/flags/Germany.jpg' class='Flag'>";
+    }
+    elseif($id==9){
+        echo "<img src='assets/images/flags/Hungary.jpg' class='Flag'>";
+    }
+    elseif($id==10){
+        echo "<img src='assets/images/flags/Iceland.jpg' class='Flag'>";
+    }
+    elseif($id==11){
+        echo "<img src='assets/images/flags/Italy.jpg' class='Flag'>";
+    }
+    elseif($id==12){
+        echo "<img src='assets/images/flags/Northern_Ireland.jpg' class='Flag'>";
+    }
+    elseif($id==13){
+        echo "<img src='assets/images/flags/Poland.jpg' class='Flag'>";
+    }
+    elseif($id==14){
+        echo "<img src='assets/images/flags/Portugal.jpg' class='Flag'>";
+    }
+    elseif($id==15){
+        echo "<img src='assets/images/flags/Republic_of_Ireland.jpg' class='Flag'>";
+    }
+    elseif($id==16){
+        echo "<img src='assets/images/flags/Romania.jpg' class='Flag'>";
+    }
+    elseif($id==17){
+        echo "<img src='assets/images/flags/Russia.jpg' class='Flag'>";
+    }
+    elseif($id==18){
+        echo "<img src='assets/images/flags/Slovakia.jpg' class='Flag'>";
+    }
+    elseif($id==19){
+        echo "<img src='assets/images/flags/Spain.jpg' class='Flag'>";
+    }
+    elseif($id==20){
+        echo "<img src='assets/images/flags/Sweden.jpg' class='Flag'>";
+    }
+    elseif($id==21){
+        echo "<img src='assets/images/flags/Switzerland.jpg' class='Flag'>";
+    }
+    elseif($id==22){
+        echo "<img src='assets/images/flags/Turkey.jpg' class='Flag'>";
+    }
+    elseif($id==23){
+        echo "<img src='assets/images/flags/Ukraine.jpg' class='Flag'>";
+    }
+    elseif($id==24){
+        echo "<img src='assets/images/flags/Wales.jpg' class='Flag'>";
+    }
 
 
 
