@@ -106,7 +106,7 @@ function getAllNations(){
     $nationquery = "SELECT *
                     FROM nations";
 
-    $result = $db->query($nationquery);
+    $result = $db->query($nationquery) or die("Error: ".$nationquery."<br>".$db->error);
 
     $db->close();
 
