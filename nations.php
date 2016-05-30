@@ -81,7 +81,7 @@ if(!isset($_SESSION['email'])){
 
                 <td>
                     <?php
-                    echo '<img src="'.$row['nationName'].' class="Flag">';
+                    echo '<img src="assets/images/flags/'.$row['nationName'].'.jpg" class="Flag">';
                     ?>
                 </td>
 
