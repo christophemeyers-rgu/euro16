@@ -58,7 +58,7 @@ if(!isset($_SESSION['email'])){
 
     <h3>List of all nations</h3>
 
-<!--    <table>-->
+    <table>
 
     <?php
 
@@ -78,36 +78,36 @@ if(!isset($_SESSION['email'])){
 
             ?>
 
-            <!--<tr>
+            <tr>
 
-                <td>-->
+                <td>
                     <?php
                         echo $counter.".";
                     ?>
-                <!--</td>
+                </td>
 
-                <td>-->
+                <td>
                     <?php
                     echo '<img src="assets/images/flags/'.$row['nationName'].'.jpg" class="Flag">';
                     ?>
-                <!--</td>
+                </td>
 
-                <td>-->
+                <td>
                     <?php
                     echo $row['nationName'];
                     ?>
-                <!--</td>
+                </td>
 
 
 
-            </tr>-->
+            </tr>
 
             <?php
         }
     }
     ?>
 
-<!--    </table>-->
+    </table>
 
 
     <img src="assets/images/flags/Albania.jpg" class="Flag">
