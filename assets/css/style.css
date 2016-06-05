@@ -7,23 +7,24 @@ nav ul{
     margin: 0;
     padding: 0;
     overflow: hidden;
+    background-color: #333;
 }
 
 nav li{
     float: left;
     display: inline-block;
     text-align: center;
-    padding: 0 10px 10px 10px;
+    padding: 14px 16px;
 }
 
-a{
+/*a{
     text-decoration: none;
     color: black;
 }
 
 a:hover{
     color: #ee393b;
-}
+}*/
 
 header{
     background-color: darkseagreen;
