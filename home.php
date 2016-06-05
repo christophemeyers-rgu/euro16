@@ -36,12 +36,21 @@ if(!isset($_SESSION['email'])){
         <nav>
             <ul>
                 <li> <a href="home.php">Home</a> </li>
-                <li> <a href="groups.php">Groups</a>
+                <!--<li> <a href="groups.php">Groups</a>
                     <ul>
                         <li> <a href="#">Your Groups</a> </li>
                         <li> <a href="#">Join a Group</a> </li>
                         <li> <a href="#">Create a Group</a> </li>
                     </ul>
+                </li>-->
+
+                <li class="dropdown">
+                    <a href="#" class="dropbtn">Dropdown</a>
+                    <div class="dropdown-content">
+                        <a href="#">Your Groups</a>
+                        <a href="#">Join a Group</a>
+                        <a href="#">Create a Group</a>
+                    </div>
                 </li>
 
                 <li> <a href="#">Matches</a></li>
