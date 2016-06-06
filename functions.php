@@ -9,14 +9,7 @@
 //include("dbConnection.php");
 
 
-
-
-function userRegistered($email,$password) {
-    //test to discover if the user is already in the DB
-    //to do that, we can find out if the email address already exists in any row
-
-//    include("db_connection.php");
-    echo "<script>alert('Test 1');</script>";
+function add_to_database(){
 
     $db = new MySQLi(
         'ap-cdbr-azure-east-c.cloudapp.net', //server or host address
@@ -30,8 +23,127 @@ function userRegistered($email,$password) {
     }
     else{
 
-        echo "<script>alert('Test 2');</script>";
+        //read input details from index.php
+        $email=$_POST['email'];
 
+
+
+
+        //create select statement to using firstname and surname as filters
+        $query="SELECT email
+				FROM users
+				WHERE email ='$email'
+			    LIMIT 1";
+
+        //check to see that sql query executes properly, and return any errors
+        $output=$db->query($query) or die("Error: ".$query."<br>".$db->error);
+
+        $return=NULL;
+
+        //go through the array of results returned from the query if any
+        while($row = $output->fetch_assoc()) {
+            $return=$row["email"];//add the email value to the return variable
+        }
+
+        //if $return is no longer NULL, then it means user exists already
+        if(isset($return)){
+            header("Location: createAccount.php?Success=No");
+        }
+        else{
+            //create user in database if they dont exists there already
+            $firstname=$_POST['firstname'];
+            $surname=$_POST['surname'];
+            $password=$_POST['password'];
+            $score=0;
+
+
+            $insert="INSERT INTO volunteers (email, password, firstname, surname, score)
+				VALUES('".$email."','".$password."','".$firstname."','".$surname."','".$score."')";
+
+            /*$stmt = $db->prepare($insert);
+            $stmt->bind_param("s",$salt);
+            $stmt->execute() or die("Error: ".$insert."<br>".$db->error);*/
+
+
+            $outcome=$db->query($insert) or die("Error: ".$insert."<br>".$db->error);
+
+            header("Location: createAccount.php?Success=Yes");
+
+            emailRegisteredUser();//call the function "emailRegisteredUser()"
+        }
+    }
+}
+
+
+//email to volunteer function
+function emailRegisteredUser(){
+
+    //setting some variables with form values
+    $firstname = $_POST["firstname"];
+    $surname = $_POST["surname"];
+    $password = $_POST["password"];
+    $email = $_POST["email"];
+    $name = $firstname . " " . $surname;
+
+    //email subject
+    $subject = "Meyers' Euro16 Bets - Registration Confirmation";
+
+
+    //email body in html
+    //ATTENTION, THE LINK MAY POINT TO THE MASTER DOMAIN, RATHER THAN YOUR OWN VOLUNTEERLOGIN.PHP
+    $txt = "Dear $name,
+					<br><br>
+					This is to confirm your registration for the Meyers' Euro16 Bets system.
+					<br><br>
+                    This is the explanation of the rules.
+					<br><br>
+					Best of luck,
+					<br><br>
+					Meyers' Euro16 Bets Team
+					<br>
+					Chris Meyers";
+
+
+    //take in the necessary swiftmailer code
+    require_once 'swiftmailer/lib/swift_required.php';
+
+    //this is all swiftmailer magic, using the gmail smtp server of my account...
+    $transporter = Swift_SmtpTransport::newInstance('smtp.gmail.com', 465, "ssl")
+        ->setUsername('christophe.meyers.312@gmail.com')
+        ->setPassword('AnnachengAddress');
+
+    //Creates an instance of the mailer
+    $mailer = Swift_Mailer::newInstance($transporter);
+
+    //the message supplies some more detailed info
+    $message = Swift_Message::newInstance("Meyers' Euro16 Bets - Registration Confirmation")
+        ->setFrom(array('christophe.meyers.312@gmail.com' => 'Chris Meyers'))	//shows my name when email arrives
+        ->setTo(array($email => $name))	//shows volunteer name as linked to their email address
+        ->setBody($txt, "text/html");	//tells swiftmailer that we're using html text
+
+    //Finally the mail is sent
+    $result = $mailer->send($message);
+
+
+}
+
+function userRegistered($email,$password) {
+    //test to discover if the user is already in the DB
+    //to do that, we can find out if the email address already exists in any row
+
+//    include("db_connection.php");
+
+    $db = new MySQLi(
+        'ap-cdbr-azure-east-c.cloudapp.net', //server or host address
+        'b27f975a706fe7', //username for connecting to database
+        '078b0d65', //user's password
+        'meyerseuro16bets' //database being connected to
+    );
+
+    if($db->connect_errno){		//check if there was a connection error and respond accordingly
+        die('Connection failed:'.connect_error);
+    }
+    else{
 
         //select all values from database using the entered values as filter
         $query="SELECT email, password
@@ -44,14 +156,9 @@ function userRegistered($email,$password) {
 
 
         if(mysqli_stmt_fetch($stmt)){	//if the sql query returns a value
-            echo "<script>alert('Test 3');</script>";
-
             return TRUE; 	//indicate that a value was returned, and user exists in database
-
         }
         else{
-            echo "<script>alert('Test 4');</script>";
-
             return FALSE; //indicate a value wasn't returned, and user doesn't exist in database
         }
         $db->close(); // Closing Connection

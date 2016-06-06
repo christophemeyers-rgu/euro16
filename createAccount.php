@@ -6,6 +6,8 @@
  * Time: 02:16
  */
 
+include("functions.php");
+
 
 session_start();
 if(isset($_SESSION['email'])){
@@ -27,7 +29,6 @@ if(isset($_SESSION['email'])){
     <link rel="stylesheet" href="assets/css/style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
 
-    <script src="assets/javascript/functions.js" type="text/javascript"></script>
 
 
     <title>Create Account</title>
@@ -35,17 +36,19 @@ if(isset($_SESSION['email'])){
 <body>
 
 
-<form id="login" action="login.php" method="post">
+<form id="login" action="createAccount.php" method="post">
     <input type="text" placeholder="Email Address" name="email">
     <br>
     <input type="password" placeholder="Password" name="password">
     <br>
-    <input type="submit" value="Login">
+    <input type="text" placeholder="Firstname" name="firstname">
+    <br>
+    <input type="text" placeholder="Surname" name="surname">
+    <br>
+    <input type="submit" value="Register">
 </form>
 
-<div class="popup" onclick="myFunction()">Create Account
-    <span class="popuptext" id="myPopup">You are already logged in</span>
-</div>
+
 
 
 
