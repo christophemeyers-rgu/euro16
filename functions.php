@@ -191,3 +191,19 @@ function getFlag($id){
 
 
 }
+
+?>
+
+<script>
+    // When the user clicks on div, open the popup or redirect to createAccount.php
+function myFunction() {
+    var session = <?php echo json_encode($_SESSION['email']); ?>;
+if (typeof session !== 'undefined'){
+window.location.assign("http://meyerseuro16bets.azurewebsites.net/createAccount.php")
+}
+else{
+var popup = document.getElementById('myPopup');
+popup.classList.toggle('show');
+}
+}
+</script>
