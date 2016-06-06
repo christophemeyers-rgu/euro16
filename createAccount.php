@@ -14,6 +14,22 @@ if(isset($_SESSION['email'])){
     header("Location: home.php");
 }
 
+
+//This check shows the right message if the user was created or existed already
+if($_SERVER['REQUEST_METHOD']==='POST'){
+    createUser();
+}
+elseif($_SERVER['REQUEST_METHOD']==='GET'){
+    $success = $_GET["Success"];
+
+    if($success=="Yes"){
+        echo "<SCRIPT>alert('Account was successfully created!');</SCRIPT>";
+    }
+    elseif($success=="No"){
+        echo "<script>alert('This email address is already registered to an account.');</script>";
+    }
+}
+
 ?>
 
 

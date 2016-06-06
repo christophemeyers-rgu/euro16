@@ -9,7 +9,7 @@
 //include("dbConnection.php");
 
 
-function add_to_database(){
+function createUser(){
 
     $db = new MySQLi(
         'ap-cdbr-azure-east-c.cloudapp.net', //server or host address
