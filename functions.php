@@ -57,7 +57,7 @@ function createUser(){
             $score=0;
 
 
-            $insert="INSERT INTO volunteers (email, password, firstname, surname, score)
+            $insert="INSERT INTO users (email, password, firstname, surname, score)
 				VALUES('".$email."','".$password."','".$firstname."','".$surname."','".$score."')";
 
             /*$stmt = $db->prepare($insert);
