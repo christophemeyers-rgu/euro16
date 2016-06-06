@@ -17,6 +17,14 @@ if($_SERVER['REQUEST_METHOD']==='GET'){
         //send user to adminhome.php
         header("Location: home.php");
     }
+
+    $success = $_GET["Success"];
+    if($success=="Yes"){
+        echo "<SCRIPT>alert('Account was successfully created!');</SCRIPT>";
+    }
+    elseif($success=="No"){
+        echo "<script>alert('This email address is already registered to an account.');</script>";
+    }
 }
 else if($_SERVER['REQUEST_METHOD']==='POST'){	//Post is used when the form is submitted
 

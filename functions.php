@@ -67,7 +67,7 @@ function createUser(){
 
             $outcome=$db->query($insert) or die("Error: ".$insert."<br>".$db->error);
 
-            header("Location: createAccount.php?Success=Yes");
+            header("Location: login.php?Success=Yes");
 
             emailRegisteredUser();//call the function "emailRegisteredUser()"
         }
