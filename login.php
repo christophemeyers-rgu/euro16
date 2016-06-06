@@ -64,7 +64,25 @@ else if($_SERVER['REQUEST_METHOD']==='POST'){	//Post is used when the form is su
         <br>
         <input type="submit" value="Login">
     </form>
+    <a href="#">Create Account</a>
 
+    <div class="popup" onclick="myFunction()">Create Account
+        <span class="popuptext" id="myPopup">You are already logged in</span>
+    </div>
+
+    <script>
+        // When the user clicks on div, open the popup
+        function myFunction() {
+            var session = <?php echo json_encode($_SESSION['email']); ?>;
+            if (typeof session !== 'undefined'){
+                window.location.assign("http://meyerseuro16bets.azurewebsites.net/createAccount.php")
+            }
+            else{
+                var popup = document.getElementById('myPopup');
+                popup.classList.toggle('show');
+            }
+        }
+    </script>
 
 
 </body>

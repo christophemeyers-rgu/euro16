@@ -36,14 +36,6 @@ if(!isset($_SESSION['email'])){
         <nav>
             <ul>
                 <li> <a href="home.php">Home</a> </li>
-                <!--<li> <a href="groups.php">Groups</a>
-                    <ul>
-                        <li> <a href="#">Your Groups</a> </li>
-                        <li> <a href="#">Join a Group</a> </li>
-                        <li> <a href="#">Create a Group</a> </li>
-                    </ul>
-                </li>-->
-
                 <li class="dropdown">
                     <a href="groups.php" class="dropbtn">Groups</a>
                     <div class="dropdown-content">
@@ -52,7 +44,6 @@ if(!isset($_SESSION['email'])){
                         <a href="#">Create a Group</a>
                     </div>
                 </li>
-
                 <li> <a href="#">Matches</a></li>
                 <li> <a href="nations.php">Participating Nations</a> </li>
                 <li> <a href="logout.php">Logout</a> </li>
