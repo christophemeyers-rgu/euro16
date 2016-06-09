@@ -269,7 +269,37 @@ function getNation($id){
             return $row;
         }
     }
+}
 
+function getResult($id){
+
+    $db = new MySQLi(
+        'ap-cdbr-azure-east-c.cloudapp.net', //server or host address
+        'b27f975a706fe7', //username for connecting to database
+        '078b0d65', //user's password
+        'meyerseuro16bets' //database being connected to
+    );
+
+    if($db->connect_errno){
+        die('Connectfailed['.$db->connect_error.']');   //if connection fails, return error
+    }
+
+    $resultQuery = "SELECT *
+                    FROM results
+                    WHERE matchID=$id";
+
+    $result = $db->query($resultQuery) or die("Error: ".$resultQuery."<br>".$db->error);
+
+    $db->close();
+
+    if(mysqli_num_rows($result)>0){
+        while($row=mysqli_fetch_array($result)){
+            return $row;
+        }
+    }
+    else{
+        return NULL;
+    }
 
 }
 

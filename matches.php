@@ -69,6 +69,17 @@ include("functions.php");
                     $nationA = getNation($matchesRow["nationIDA"]);
                     $nationB = getNation($matchesRow["nationIDB"]);
 
+                    $results = getResult($matchesRow["matchID"]);
+                    if(isset($results)){
+                        $goalsA = $results["teamAGoals"];
+                        $goalsB = $results["teamBGoals"];
+                    }
+                    else{
+                        $goalsA = "-";
+                        $goalsB = "-";
+                    }
+
+
                     ?>
 
                     <tr>
@@ -85,6 +96,11 @@ include("functions.php");
                         <td>
                             <?php
                             getFlag($nationA["nationID"]);
+                            ?>
+                        </td>
+                        <td>
+                            <?php
+                            echo $goalsA.":".$goalsB;
                             ?>
                         </td>
                         <td>
