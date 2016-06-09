@@ -78,8 +78,10 @@ include("functions.php");
                             ?>
                         </td>
                         <td>
-                            <span style="text-align: right">
-                                France
+                            <span style="float: right">
+                                <?php
+                                echo $nationA["nationName"];
+                                ?>
                             </span>
 
                         </td>
