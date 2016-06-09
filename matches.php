@@ -103,7 +103,7 @@ include("functions.php");
                                 ?>
                             </td>
                             <td>
-                                <input type="number" name="betA[<?php echo $counter; ?>]">
+                                <input class="bet" type="number" name="betA[<?php echo $counter; ?>]">
                             </td>
                             <td>
                                 <?php
@@ -111,7 +111,7 @@ include("functions.php");
                                 ?>
                             </td>
                             <td>
-                                <input type="number" name="betB[<?php echo $counter; ?>]">
+                                <input class="bet" type="number" name="betB[<?php echo $counter; ?>]">
                             </td>
                             <td>
                                 <?php
