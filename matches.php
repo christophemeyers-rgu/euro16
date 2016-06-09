@@ -54,74 +54,87 @@ include("functions.php");
 
         <h3>List of all matches</h3>
 
-        <table>
+        <form action="matches.php" method="post">
+            <table>
 
-            <?php
+                <?php
 
-            $matchesResult = getAllMatches();
+                $matchesResult = getAllMatches();
 
-            if(mysqli_num_rows($matchesResult)>0){
+                if(mysqli_num_rows($matchesResult)>0){
 
-
-
-                while($matchesRow = mysqli_fetch_array($matchesResult)){
-
-                    $nationA = getNation($matchesRow["nationIDA"]);
-                    $nationB = getNation($matchesRow["nationIDB"]);
-
-                    $results = getResult($matchesRow["matchID"]);
-                    if(isset($results)){
-                        $goalsA = $results["teamAGoals"];
-                        $goalsB = $results["teamBGoals"];
-                    }
-                    else{
-                        $goalsA = "-";
-                        $goalsB = "-";
-                    }
+                    $counter = 0;
 
 
-                    ?>
+                    while($matchesRow = mysqli_fetch_array($matchesResult)){
 
-                    <tr>
-                        <td>
-                            <?php
-                            echo $matchesRow["matchTime"];
-                            ?>
-                        </td>
-                        <td style="float: right">
+                        $counter++;
+
+                        $nationA = getNation($matchesRow["nationIDA"]);
+                        $nationB = getNation($matchesRow["nationIDB"]);
+
+                        $results = getResult($matchesRow["matchID"]);
+                        if(isset($results)){
+                            $goalsA = $results["teamAGoals"];
+                            $goalsB = $results["teamBGoals"];
+                        }
+                        else{
+                            $goalsA = "-";
+                            $goalsB = "-";
+                        }
+
+
+                        ?>
+
+                        <tr>
+                            <td>
+                                <?php
+                                echo $matchesRow["matchTime"];
+                                ?>
+                            </td>
+                            <td style="float: right">
                                 <?php
                                 echo $nationA["nationName"];
                                 ?>
-                        </td>
-                        <td style="text-align: right">
-                            <?php
-                            getFlag($nationA["nationID"]);
-                            ?>
-                        </td>
-                        <td>
-                            <?php
-                            echo $goalsA.":".$goalsB;
-                            ?>
-                        </td>
-                        <td>
-                            <?php
-                            getFlag($nationB["nationID"]);
-                            ?>
-                        </td>
-                        <td>
-                            <?php
-                            echo $nationB["nationName"];
-                            ?>
-                        </td>
+                            </td>
+                            <td style="text-align: right">
+                                <?php
+                                getFlag($nationA["nationID"]);
+                                ?>
+                            </td>
+                            <td>
+                                <input type="number" name="betA[<?php echo $counter; ?>]">
+                            </td>
+                            <td>
+                                <?php
+                                echo $goalsA.":".$goalsB;
+                                ?>
+                            </td>
+                            <td>
+                                <input type="number" name="betB[<?php echo $counter; ?>]">
+                            </td>
+                            <td>
+                                <?php
+                                getFlag($nationB["nationID"]);
+                                ?>
+                            </td>
+                            <td>
+                                <?php
+                                echo $nationB["nationName"];
+                                ?>
+                            </td>
 
-                    </tr>
+                        </tr>
 
-                    <?php
+                        <?php
+                    }
                 }
-            }
-            ?>
+                ?>
 
-        </table>
+            </table>
+            <input type="submit" value="Submit Bets">
+        </form>
+
 
 
     </div>
