@@ -83,6 +83,7 @@ include("functions.php");
                                 echo $nationA["nationName"];
                                 ?>
                             </span>
+
                         </td>
                         <td>
                             <?php
