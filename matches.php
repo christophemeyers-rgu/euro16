@@ -93,7 +93,7 @@ include("functions.php");
                                 echo $nationA["nationName"];
                                 ?>
                         </td>
-                        <td>
+                        <td style="text-align: right">
                             <?php
                             getFlag($nationA["nationID"]);
                             ?>
