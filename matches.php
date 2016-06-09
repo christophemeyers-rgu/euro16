@@ -78,9 +78,11 @@ include("functions.php");
                             ?>
                         </td>
                         <td>
-                            <?php
-                            echo $nationA["nationName"];
-                            ?>
+                            <span style="text-align: right">
+                                <?php
+                                echo $nationA["nationName"];
+                                ?>
+                            </span>
                         </td>
                         <td>
                             <?php
