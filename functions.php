@@ -220,6 +220,59 @@ function getAllNations(){
     return $result;
 }
 
+function getAllMatches(){
+
+    $db = new MySQLi(
+        'ap-cdbr-azure-east-c.cloudapp.net', //server or host address
+        'b27f975a706fe7', //username for connecting to database
+        '078b0d65', //user's password
+        'meyerseuro16bets' //database being connected to
+    );
+
+    if($db->connect_errno){
+        die('Connectfailed['.$db->connect_error.']');   //if connection fails, return error
+    }
+
+    $matchquery = "SELECT *
+                   FROM matches";
+
+    $result = $db->query($matchquery) or die("Error: ".$matchquery."<br>".$db->error);
+
+    $db->close();
+
+    return $result;
+}
+
+function getNation($id){
+
+    $db = new MySQLi(
+        'ap-cdbr-azure-east-c.cloudapp.net', //server or host address
+        'b27f975a706fe7', //username for connecting to database
+        '078b0d65', //user's password
+        'meyerseuro16bets' //database being connected to
+    );
+
+    if($db->connect_errno){
+        die('Connectfailed['.$db->connect_error.']');   //if connection fails, return error
+    }
+
+    $nationquery = "SELECT *
+                    FROM nations
+                    WHERE nationID = $id";
+
+    $result = $db->query($nationquery) or die("Error: ".$nationquery."<br>".$db->error);
+
+    $db->close();
+
+    if(mysqli_num_rows($result)>0){
+        while($row=mysqli_fetch_array($result)){
+            return $row;
+        }
+    }
+
+
+}
+
 function getFlag($id){
 
     if($id==1){

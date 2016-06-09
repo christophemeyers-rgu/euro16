@@ -6,6 +6,8 @@
  * Time: 23:38
  */
 
+include("functions.php");
+
 ?>
 
 <!DOCTYPE html>
@@ -50,7 +52,60 @@
 
     <div class="grid-100 tablet-grid-100 mobile-grid-100">
 
+        <h3>List of all matches</h3>
 
+        <table>
+
+            <?php
+
+            $matchesResult = getAllMatches();
+
+            if(mysqli_num_rows($matchesResult)>0){
+
+
+
+                while($matchesRow = mysqli_fetch_array($matchesResult)){
+
+                    $nationA = getNation($matchesRow["nationIDA"]);
+                    $nationB = getNation($matchesRow["nationIDB"]);
+
+                    ?>
+
+                    <tr>
+                        <td>
+                            <?php
+                            echo $matchesRow["matchTime"];
+                            ?>
+                        </td>
+                        <td>
+                            <?php
+                            echo $nationA["nationName"];
+                            ?>
+                        </td>
+                        <td>
+                            <?php
+                            getFlag($nationA["nationID"]);
+                            ?>
+                        </td>
+                        <td>
+                            <?php
+                            getFlag($nationB["nationID"]);
+                            ?>
+                        </td>
+                        <td>
+                            <?php
+                            echo $nationB["nationName"];
+                            ?>
+                        </td>
+
+                    </tr>
+
+                    <?php
+                }
+            }
+            ?>
+
+        </table>
 
 
     </div>
