@@ -77,15 +77,12 @@ include("functions.php");
                             echo $matchesRow["matchTime"];
                             ?>
                         </td>
-                        <td>
-                            <span style="float: right">
+                        <td style="float: right">
                                 <?php
                                 echo $nationA["nationName"];
                                 ?>
-                            </span>
-
                         </td>
-                        <td>
+                        <td style="float: right">
                             <?php
                             getFlag($nationA["nationID"]);
                             ?>
