@@ -57,7 +57,7 @@ unlockedForBetting();
 
     <nav>
         <ul>
-            <li> <a href="home.php">Home</a> </li>
+            <li> <a href="index.php">Home</a> </li>
             <li> <a href="#">Groups</a> </li>
             <li> <a href="matches.php">Matches</a></li>
             <li> <a href="nations.php">Participating Nations</a> </li>

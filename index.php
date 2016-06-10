@@ -36,7 +36,7 @@ if(!isset($_SESSION['email'])){
 
         <nav>
             <ul>
-                <li> <a href="home.php">Home</a> </li>
+                <li> <a href="index.php">Home</a> </li>
                 <li class="dropdown">
                     <a href="groups.php" class="dropbtn">Groups</a>
                     <div class="dropdown-content">
