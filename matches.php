@@ -119,7 +119,7 @@ unlockedForBetting();
                         $bets = getBets($matchesRow["matchID"],$_SESSION["email"]);
 
                         if($matchesRow["unlockedForBetting"] == FALSE){
-                            $disabled = "disabled";
+                            $disabled = "readonly";
                         }
                         else{
                             $disabled = "";

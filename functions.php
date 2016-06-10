@@ -647,7 +647,6 @@ function groupExists($groupName, $groupPassword){
             return FALSE; //indicate a value wasn't returned, and user doesn't exist in database
         }
         $db->close(); // Closing Connection
-
     }
 }
 
@@ -663,6 +662,7 @@ function joinGroup($userID, $groupID){
         die('Connection failed:'.connect_error);
     }
     else{
+
         $insert = "INSERT INTO ispartof (userID, groupID)
                            VALUES ('".$userID."', '".$groupID."')";
         $outcome = $db->query($insert) or die("Error: ".$insert."<br>".$db->error);
