@@ -13,7 +13,17 @@ if(!isset($_SESSION['email'])){
     header("Location: login.php");
 }
 
+if($_SERVER['REQUEST_METHOD']==='POST'){	//Post is used when the form is submitted
 
+    $i
+    foreach($_POST["betA"] as $a){
+        //process invite
+        echo "{$a} was bet {$i} for team A. <br />";
+    }
+    foreach($_POST["betB"] as $b){
+        echo "{$b} was bet {$i} for team B. <br />";
+    }
+}
 ?>
 
 <!DOCTYPE html>
