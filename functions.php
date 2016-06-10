@@ -483,7 +483,9 @@ function countPoints($email){
 
                 $betsResult = $db->query($betsQuery) or die("Error: ".$betsQuery."<br>".$db->error);
 
-                echo "<SCRIPT>alert('Works with this query {$betsQuery}!');</SCRIPT>";
+                echo $betsQuery;
+
+                echo "<SCRIPT>alert('Works with this email {$email}!');</SCRIPT>";
 
                 $betsRow = $betsResult->fetch_assoc(); //get the row out of the table
 
@@ -524,6 +526,8 @@ function countPoints($email){
     $db->close();
 
     return $points;
+
+
 }
 
 function getFlag($id){
