@@ -15,15 +15,19 @@ if(!isset($_SESSION['email'])){
 
 if($_SERVER['REQUEST_METHOD']==='POST'){	//Post is used when the form is submitted
 
-    $i
+    $i = 0;
     foreach($_POST["betA"] as $a){
         //process invite
+        $i++;
         echo "{$a} was bet {$i} for team A. <br />";
     }
+    $j = 0;
     foreach($_POST["betB"] as $b){
-        echo "{$b} was bet {$i} for team B. <br />";
+        $j++;
+        echo "{$b} was bet {$j} for team B. <br />";
     }
 }
+
 ?>
 
 <!DOCTYPE html>
