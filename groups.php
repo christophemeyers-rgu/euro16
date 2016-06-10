@@ -107,16 +107,18 @@ if($_SERVER['REQUEST_METHOD']==='GET'){
 
                             while($membersRow = mysqli_fetch_array($membersResult)){
 
+
+
                                 ?>
                                 <tr>
                                     <td>
                                         <?php
-                                        echo $membersRow["firstname"]." ".$membersRow["surname"];
+                                        getUserName(getUserEmail($membersRow["userID"]));
                                         ?>
                                     </td>
                                     <td>
                                         <?php
-                                        echo countPoints($membersRow["email"]);
+                                        echo countPoints(getUserEmail($membersRow["userID"]));
                                         ?>
                                     </td>
                                 </tr>

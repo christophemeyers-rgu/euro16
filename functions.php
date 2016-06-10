@@ -606,6 +606,31 @@ function getGroupMembers($groupID){
     }
 }
 
+function getUserEmail($userID){
+
+    $db = new MySQLi(
+        'ap-cdbr-azure-east-c.cloudapp.net', //server or host address
+        'b27f975a706fe7', //username for connecting to database
+        '078b0d65', //user's password
+        'meyerseuro16bets' //database being connected to
+    );
+
+    if($db->connect_errno){		//check if there was a connection error and respond accordingly
+        die('Connection failed:'.connect_error);
+    }
+    else{
+        $query = "SELECT email
+                  FROM users
+                  WHERE userID='$userID'";
+        $result = $db->query($query) or die("Error: ".$query."<br>".$db->error);
+        $emailRow = $result->fetch_assoc(); //get the row out of the table
+        $email = $emailRow['email'];  //There we have it
+        $db->close();
+
+        return $email;
+    }
+}
+
 function getGroupName($groupID){
 
     $db = new MySQLi(
