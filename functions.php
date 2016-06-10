@@ -489,19 +489,20 @@ function countPoints($email){
 
                 echo "<SCRIPT>alert('Works after getting difference of bets!');</SCRIPT>";
 
-                if($betsDiff===$scoreDiff){
+                if($betsDiff==$scoreDiff){
                     echo "<SCRIPT>alert('Works with right difference!');</SCRIPT>";
 
-                    if($betsRow["teamABets"]===$scoreRow["teamAGoals"]) {
+                    if($betsRow["teamABets"]==$scoreRow["teamAGoals"]) {
                         echo "<SCRIPT>alert('Works with exact score!');</SCRIPT>";
 
                         $points += 3;
+
                     }
                     else {
                         $points += 2;
                     }
                 }
-                elseif(sign($betsDiff)===sign($scoreDiff)){
+                elseif(sign($betsDiff)==sign($scoreDiff)){
                     echo "<SCRIPT>alert('Works with right sign!');</SCRIPT>";
 
                     $points += 1;
