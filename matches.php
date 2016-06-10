@@ -26,12 +26,14 @@ if($_SERVER['REQUEST_METHOD']==='GET'){
 }
 elseif($_SERVER['REQUEST_METHOD']==='POST'){	//Post is used when the form is submitted
 
-    foreach($_POST["input"] as $input){
+    /*foreach($_POST["input"] as $input){
         //process invite
         echo "{$input['betA']} - {$input['betB']} was bet for match of id {$input['matchID']}. <br />";
 
 
-    }
+    }*/
+
+    makeBets();
 
 }
 
