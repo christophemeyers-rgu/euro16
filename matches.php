@@ -15,17 +15,11 @@ if(!isset($_SESSION['email'])){
 
 if($_SERVER['REQUEST_METHOD']==='POST'){	//Post is used when the form is submitted
 
-    $i = 0;
-    foreach($_POST["betA"] as $a){
+    foreach($_POST["betA"] as $x){
         //process invite
-        $i++;
-        echo "{$a} was bet {$i} for team A. <br />";
+        echo "{$x['betA']} - {$x['betB']} was bet for match of id {$x['matchID']}. <br />";
     }
-    $j = 0;
-    foreach($_POST["betB"] as $b){
-        $j++;
-        echo "{$b} was bet {$j} for team B. <br />";
-    }
+
 }
 
 ?>
@@ -128,12 +122,12 @@ if($_SERVER['REQUEST_METHOD']==='POST'){	//Post is used when the form is submitt
                                 if(isset($bets)){
                                     $betA = $bets["teamABet"];
                                     ?>
-                                    <input class="bet" type="number" name="betA[<?php echo $matchesRow["matchID"]; ?>]" value="<?php echo $betA; ?>">
+                                    <input class="bet" type="number" name="input[<?php echo $counter; ?>][betA]" value="<?php echo $betA; ?>">
                                     <?php
                                 }
                                 else{
                                     ?>
-                                    <input class="bet" type="number" name="betA[<?php echo $matchesRow["matchID"]; ?>]">
+                                    <input class="bet" type="number" name="input[<?php echo $counter; ?>][betA]">
                                     <?php
                                 }
                                 ?>
@@ -148,12 +142,12 @@ if($_SERVER['REQUEST_METHOD']==='POST'){	//Post is used when the form is submitt
                                 if(isset($bets)){
                                     $betB = $bets["teamBBet"];
                                     ?>
-                                    <input class="bet" type="number" name="betB[<?php echo $counter; ?>]" value="<?php echo $betB; ?>">
+                                    <input class="bet" type="number" name="input[<?php echo $counter; ?>][betB]" value="<?php echo $betB; ?>">
                                     <?php
                                 }
                                 else{
                                     ?>
-                                    <input class="bet" type="number" name="betB[<?php echo $counter; ?>]">
+                                    <input class="bet" type="number" name="input[<?php echo $counter; ?>][betB]">
                                     <?php
                                 }
                                 ?>
@@ -170,7 +164,7 @@ if($_SERVER['REQUEST_METHOD']==='POST'){	//Post is used when the form is submitt
                             </td>
 
                         </tr>
-
+                        <input hidden type="number" value="<?php echo $matchesRow["matchID"]; ?>" name="input[<?php echo $counter; ?>][matchID]">
                         <?php
                     }
                 }
