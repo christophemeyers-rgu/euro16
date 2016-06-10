@@ -70,10 +70,58 @@ function createUser(){
             header("Location: login.php?Success=Yes");
 
             emailRegisteredUser();//call the function "emailRegisteredUser()"
+
+            $db->close();
         }
     }
 }
 
+function makeBets(){
+
+    $db = new MySQLi(
+        'ap-cdbr-azure-east-c.cloudapp.net', //server or host address
+        'b27f975a706fe7', //username for connecting to database
+        '078b0d65', //user's password
+        'meyerseuro16bets' //database being connected to
+    );
+
+    if($db->connect_errno){		//check if there was a connection error and respond accordingly
+        die('Connection failed:'.connect_error);
+    }
+    else{
+        $email = $_SESSION["email"];
+
+        $idQuery = "SELECT userID
+                    FROM users
+                    WHERE email='$email'";
+
+        $idResult = $db->query($idQuery) or die("Error: ".$idQuery."<br>".$db->error);
+
+        $idRow = $idResult->fetch_assoc(); //get the row out of the table
+
+        $userID = $idRow['userID'];  //There we have it
+
+
+        foreach($_POST["input"] as $input){
+            //process invite
+            echo "{$input['betA']} - {$input['betB']} was bet for match of id {$input['matchID']}. <br />";
+
+            $betA = $input["betA"];
+            $betB = $input["betB"];
+            $matchID = $input["matchID"];
+
+            $insert = "INSERT INTO bets (userID, matchID, teamABet, teamBBet)
+                       VALUES ('".$userID."', '".$matchID."', '".$betA."', '".$betB."')";
+
+            $outcome = $db->query($insert) or die("Error: ".$insert."<br>".$db->error);
+
+            header("Location: matches.php?Success=Yes");
+
+            $db->close();
+        }
+    }
+
+}
 
 //email to volunteer function
 function emailRegisteredUser(){
