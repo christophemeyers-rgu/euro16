@@ -6,9 +6,6 @@
  * Time: 17:04
  */
 
-echo "test";
-
-
 include("functions.php");
 
 session_start();
