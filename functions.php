@@ -454,6 +454,7 @@ function countPoints($email){
         die('Connection failed:'.connect_error);
     }
     else{
+        echo "<SCRIPT>alert('Works 1!');</SCRIPT>";
 
         $scoreQuery = "SELECT *
                        FROM results";
