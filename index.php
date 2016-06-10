@@ -64,9 +64,50 @@ header("Location: login.php");
     <div class="grid-100 tablet-grid-100 mobile-grid-100">
 
 
+        <h3>
+            Placing bets:
+        </h3>
+
         <p>
-            Hello, here's the rules.
+            Under "Matches", you can change your bets for each of the known matches as many times as you want.
+            <br>
+            Bets close for each match separately 1 hour before kickoff.
         </p>
+
+        <h3>
+            Points system:
+        </h3>
+
+        <p>
+            Once the match score is updated, you will be rewarded points for each bet you made:
+            <br>
+            <br>
+            3 points: You guessed the exact score!
+            <br>
+            2 points: You correctly guessed the goal difference.
+            <br>
+            1 point: You correctly picked the winner of the match.
+            <br>
+            0 points: You got it all wrong or did not even bother to bet.
+        </p>
+
+        <h3>
+            Groups:
+        </h3>
+
+        <p>
+            You can join multiple groups to compare points with your friends.
+        </p>
+
+        <h3>
+            Bugs or questions:
+        </h3>
+
+        <p>
+            Please talk to me, I will look to fix things as quickly as convenient.
+        </p>
+
+
 
     </div>
 
