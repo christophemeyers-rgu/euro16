@@ -72,6 +72,7 @@ else if($_SERVER['REQUEST_METHOD']==='POST'){	//Post is used when the form is su
         <input type="password" placeholder="Password" name="password">
         <br>
         <input type="submit" value="Login">
+        <br>
         <div style="text-align: center" class="popup" onclick="myFunction()">Create Account
             <span class="popuptext" id="myPopup">You are already logged in</span>
         </div>
