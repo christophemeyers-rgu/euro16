@@ -472,7 +472,7 @@ function countPoints($email){
 
                 $id = $scoreRow["matchID"];
 
-                echo "<SCRIPT>alert('Works after getting difference of score!');</SCRIPT>";
+                echo "<SCRIPT>alert('Works after getting difference of score as {$scoreDiff}!');</SCRIPT>";
 
                 $betsQuery = "SELECT *
                               FROM bets
@@ -487,7 +487,7 @@ function countPoints($email){
 
                 $betsDiff = $betsRow["teamABets"] - $betsRow["teamBBets"];
 
-                echo "<SCRIPT>alert('Works after getting difference of bets!');</SCRIPT>";
+                echo "<SCRIPT>alert('Works after getting difference of bets as {$betsDiff}!');</SCRIPT>";
 
                 if($betsDiff==$scoreDiff){
                     echo "<SCRIPT>alert('Works with right difference!');</SCRIPT>";
