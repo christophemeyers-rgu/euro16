@@ -36,7 +36,7 @@ if(!isset($_SESSION['email'])){
     </h1>
     <nav>
         <ul>
-            <li> <a href="home.php">Home</a> </li>
+            <li> <a href="index.php">Home</a> </li>
             <li class="dropdown">
                 <a href="groups.php" class="dropbtn">Groups</a>
                 <div class="dropdown-content">
@@ -53,18 +53,18 @@ if(!isset($_SESSION['email'])){
 </header>
 
 
-    <main>
+<main>
 
 
-        <div class="grid-100 tablet-grid-100 mobile-grid-100">
+    <div class="grid-100 tablet-grid-100 mobile-grid-100">
 
-            <p>Hello my friend.
-                This is how this is going to work:
-                blablabla rules blabla.</p>
+        <p>Hello my friend.
+            This is how this is going to work:
+            blablabla rules blabla.</p>
 
-        </div>
+    </div>
 
-    </main>
+</main>
 
 </body>
 </html>

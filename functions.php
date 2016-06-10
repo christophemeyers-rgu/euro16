@@ -23,7 +23,7 @@ function createUser(){
     }
     else{
 
-        //read input details from home.php
+        //read input details from index.php
         $email=$_POST['email'];
 
 
@@ -528,7 +528,7 @@ function createGroup($groupName, $password){
     }
     else{
 
-        //read input details from home.php
+        //read input details from index.php
 
         //create select statement to using firstname and surname as filters
         $query="SELECT groupName

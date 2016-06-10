@@ -1,12 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Christophe
- * Date: 30/05/2016
- * Time: 18:48
- */
-
-include "functions.php";
 
 
 session_start();
@@ -16,6 +8,7 @@ if(!isset($_SESSION['email'])){
 
 
 ?>
+
 
 
 
@@ -30,7 +23,7 @@ if(!isset($_SESSION['email'])){
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
 
 
-    <title>Participating Nations</title>
+    <title>Home</title>
 </head>
 <body>
 
@@ -60,65 +53,18 @@ if(!isset($_SESSION['email'])){
 </header>
 
 
-<main>
+    <main>
 
 
+        <div class="grid-100 tablet-grid-100 mobile-grid-100">
 
-    <div class="grid-100 tablet-grid-100 mobile-grid-100">
+            <p>Hello my friend.
+                This is how this is going to work:
+                blablabla rules blabla.</p>
 
+        </div>
 
-        <h3>List of all nations</h3>
-
-        <table>
-
-        <?php
-
-        $result = getAllNations();
-
-
-        if(mysqli_num_rows($result)>0){
-
-
-
-            while($row = mysqli_fetch_array($result)){
-
-
-                ?>
-
-                <tr>
-
-                    <td>
-                        <?php
-                            echo $row["nationID"].".";
-                        ?>
-                    </td>
-
-                    <td>
-                        <?php
-                        getFlag($row["nationID"]);
-                        ?>
-                    </td>
-
-                    <td>
-                        <?php
-                        echo $row['nationName'];
-                        ?>
-                    </td>
-
-
-
-                </tr>
-
-                <?php
-            }
-        }
-        ?>
-
-        </table>
-
-    </div>
-
-</main>
+    </main>
 
 </body>
 </html>
