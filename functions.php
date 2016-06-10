@@ -532,7 +532,7 @@ function joinGroup(){
         $stmt->bind_result($groupID);
 
 
-        if(mysqli_stmt_fetch($stmt)){	//if the sql query returns a value
+        if(isset($groupID)){	//if the sql query returns a value
 
             $insert = "INSERT INTO ispartof (userID, groupID)
                            VALUES ('".$userID."', '".$groupID."')";
