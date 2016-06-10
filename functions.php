@@ -460,7 +460,6 @@ function countPoints($email){
 
         $scoreResult = $db->query($scoreQuery) or die("Error: ".$scoreQuery."<br>".$db->error);
 
-
         if(mysqli_num_rows($scoreResult)>0){
             while($scoreRow=mysqli_fetch_array($scoreResult)){
 
