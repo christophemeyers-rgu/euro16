@@ -11,7 +11,7 @@ include("functions.php");
 
 session_start();
 if(isset($_SESSION['email'])){
-    header("Location: index.php");
+    header("Location: home.php");
 }
 
 
