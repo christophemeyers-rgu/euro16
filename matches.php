@@ -39,8 +39,6 @@ elseif($_SERVER['REQUEST_METHOD']==='POST'){	//Post is used when the form is sub
 
 unlockedForBetting();
 
-$score = countPoints($_SESSION["email"]);
-echo "Your score is: ".$score;
 ?>
 
 <!DOCTYPE html>
@@ -87,6 +85,12 @@ echo "Your score is: ".$score;
 
         <h3>List of all matches</h3>
 
+        <p>
+            <?php
+            $score = countPoints($_SESSION["email"]);
+            echo "Your current score is: ".$score;
+            ?>
+        </p>
         <form action="matches.php" method="post">
             <table>
 
