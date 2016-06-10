@@ -134,7 +134,7 @@ if(!isset($_SESSION['email'])){
                                 if(isset($bets)){
                                     $betB = $bets["teamBBet"];
                                     ?>
-                                    <input class="bet" type="number" name="betB[<?php echo $counter; ?>]" value="<?php echo $betA; ?>">
+                                    <input class="bet" type="number" name="betB[<?php echo $counter; ?>]" value="<?php echo $betB; ?>">
                                     <?php
                                 }
                                 else{
