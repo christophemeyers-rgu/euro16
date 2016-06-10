@@ -110,11 +110,13 @@ function makeBets(){
             $betB = $input["betB"];
             $matchID = $input["matchID"];
 
-            if(isset($betA) && isset($betB)){
-                $insert = "INSERT INTO bets (userID, matchID, teamABet, teamBBet)
+            if($betA != NULL){
+                if($betB != NULL){
+                    $insert = "INSERT INTO bets (userID, matchID, teamABet, teamBBet)
                            VALUES ('".$userID."', '".$matchID."', '".$betA."', '".$betB."')";
 
-                $outcome = $db->query($insert) or die("Error: ".$insert."<br>".$db->error);
+                    $outcome = $db->query($insert) or die("Error: ".$insert."<br>".$db->error);
+                }
             }
 
 
