@@ -115,11 +115,13 @@ function makeBets(){
 
             $outcome = $db->query($insert) or die("Error: ".$insert."<br>".$db->error);
 
-            header("Location: matches.php?Success=Yes");
 
-            $db->close();
         }
     }
+
+    header("Location: matches.php?Success=Yes");
+
+    $db->close();
 
 }
 
