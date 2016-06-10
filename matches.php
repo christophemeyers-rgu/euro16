@@ -128,12 +128,12 @@ if($_SERVER['REQUEST_METHOD']==='POST'){	//Post is used when the form is submitt
                                 if(isset($bets)){
                                     $betA = $bets["teamABet"];
                                     ?>
-                                    <input class="bet" type="number" name="betA[<?php echo $counter; ?>]" value="<?php echo $betA; ?>">
+                                    <input class="bet" type="number" name="betA[<?php echo $matchesRow["matchID"]; ?>]" value="<?php echo $betA; ?>">
                                     <?php
                                 }
                                 else{
                                     ?>
-                                    <input class="bet" type="number" name="betA[<?php echo $counter; ?>]">
+                                    <input class="bet" type="number" name="betA[<?php echo $matchesRow["matchID"]; ?>]">
                                     <?php
                                 }
                                 ?>
