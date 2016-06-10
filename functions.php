@@ -501,7 +501,7 @@ function countPoints($email){
                         $points += 2;
                     }
                 }
-                elseif(gmp_sign($betsDiff)===gmp_sign($scoreDiff)){
+                elseif(sign($betsDiff)===sign($scoreDiff)){
                     echo "<SCRIPT>alert('Works with right sign!');</SCRIPT>";
 
                     $points += 1;
@@ -598,6 +598,13 @@ function getFlag($id){
 
 
 }
+
+
+
+function sign( $number ) {
+    return ( $number > 0 ) ? 1 : ( ( $number < 0 ) ? -1 : 0 );
+}
+
 
 ?>
 
