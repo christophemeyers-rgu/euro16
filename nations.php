@@ -30,7 +30,7 @@ if(!isset($_SESSION['email'])){
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
 
 
-    <title>Nations</title>
+    <title>Participating Nations</title>
 </head>
 <body>
 
@@ -42,11 +42,17 @@ if(!isset($_SESSION['email'])){
         getUserName($_SESSION["email"]);
         ?>
     </h1>
-
     <nav>
         <ul>
             <li> <a href="index.php">Home</a> </li>
-            <li> <a href="#">Groups</a> </li>
+            <li class="dropdown">
+                <a href="groups.php" class="dropbtn">Groups</a>
+                <div class="dropdown-content">
+                    <a href="groups.php">Your Groups</a>
+                    <a href="joinGroup.php">Join a Group</a>
+                    <a href="createGroup.php">Create a Group</a>
+                </div>
+            </li>
             <li> <a href="matches.php">Matches</a></li>
             <li> <a href="nations.php">Participating Nations</a> </li>
             <li> <a href="logout.php">Logout</a> </li>

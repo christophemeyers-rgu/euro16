@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: Christophe
  * Date: 10/06/2016
- * Time: 14:23
+ * Time: 16:14
  */
 
 include("functions.php");
@@ -15,7 +15,7 @@ if(!isset($_SESSION['email'])){
 
 if($_SERVER['REQUEST_METHOD']==='POST'){	//Post is used when the form is submitted
 
-    $groupName = $_POST["groupName"];
+    /*$groupName = $_POST["groupName"];
     $groupPassword = $_POST["groupPassword"];
     if(groupExists($groupName, $groupPassword)){
         $userID = getUserID($_SESSION["email"]);
@@ -26,7 +26,7 @@ if($_SERVER['REQUEST_METHOD']==='POST'){	//Post is used when the form is submitt
     }
     else{
         echo "<SCRIPT>alert('The entered Name-Password combination matches no groups.');</SCRIPT>";
-    }
+    }*/
 
 }
 ?>
@@ -44,7 +44,7 @@ if($_SERVER['REQUEST_METHOD']==='POST'){	//Post is used when the form is submitt
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
 
 
-    <title>Join a Group</title>
+    <title>Create Group</title>
 </head>
 <body>
 
@@ -79,7 +79,7 @@ if($_SERVER['REQUEST_METHOD']==='POST'){	//Post is used when the form is submitt
 
     <div class="grid-100 tablet-grid-100 mobile-grid-100">
 
-        <form action="joinGroup.php" method="post">
+        <form action="createGroup.php" method="post">
             <table>
                 <tr>
                     <td>

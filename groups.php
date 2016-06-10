@@ -36,21 +36,26 @@ if($_SERVER['REQUEST_METHOD']==='GET'){
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
 
 
-    <title>Home</title>
+    <title>My Groups</title>
 </head>
 <body>
 
 
 <header>
+
+    <h1><?php
+        getUserName($_SESSION["email"]);
+        ?>
+    </h1>
     <nav>
         <ul>
             <li> <a href="index.php">Home</a> </li>
             <li class="dropdown">
                 <a href="groups.php" class="dropbtn">Groups</a>
                 <div class="dropdown-content">
-                    <a href="#">Your Groups</a>
+                    <a href="groups.php">Your Groups</a>
                     <a href="joinGroup.php">Join a Group</a>
-                    <a href="#">Create a Group</a>
+                    <a href="createGroup.php">Create a Group</a>
                 </div>
             </li>
             <li> <a href="matches.php">Matches</a></li>
