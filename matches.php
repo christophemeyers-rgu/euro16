@@ -116,8 +116,8 @@ unlockedForBetting();
 
                         $bets = getBets($matchesRow["matchID"],$_SESSION["email"]);
 
-                        if($matchesRow["unlockedForBetting"]){
-                            echo 'disabled';
+                        if($matchesRow["unlockedForBetting"]=0){
+                            echo $disabled;
                         }
 
 
