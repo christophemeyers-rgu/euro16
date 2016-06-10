@@ -53,13 +53,13 @@ elseif($_SERVER['REQUEST_METHOD']==='GET'){
 
 
 <form id="login" action="createAccount.php" method="post">
-    <input type="text" placeholder="Email Address" name="email">
+    <input type="text" placeholder="Email Address" name="email" required>
     <br>
-    <input type="password" placeholder="Password" name="password">
+    <input type="password" placeholder="Password" name="password" required>
     <br>
-    <input type="text" placeholder="Firstname" name="firstname">
+    <input type="text" placeholder="Firstname" name="firstname" required>
     <br>
-    <input type="text" placeholder="Surname" name="surname">
+    <input type="text" placeholder="Surname" name="surname" required>
     <br>
     <input type="submit" value="Register">
 </form>

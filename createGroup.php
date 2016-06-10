@@ -86,7 +86,7 @@ if($_SERVER['REQUEST_METHOD']==='POST'){	//Post is used when the form is submitt
                         <label for="groupName">Group Name:</label>
                     </td>
                     <td>
-                        <input type="text" name="groupName">
+                        <input type="text" name="groupName" required>
                     </td>
                 </tr>
                 <tr>
@@ -94,14 +94,14 @@ if($_SERVER['REQUEST_METHOD']==='POST'){	//Post is used when the form is submitt
                         <label for="groupPassword">Group Password:</label>
                     </td>
                     <td>
-                        <input type="password" name="groupPassword">
+                        <input type="password" name="groupPassword" required>
                     </td>
                 </tr>
                 <tr>
                     <td>
                     </td>
                     <td>
-                        <input type="submit" value="Join Group">
+                        <input type="submit" value="Create and Join Group">
                     </td>
                 </tr>
             </table>
