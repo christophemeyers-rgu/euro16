@@ -503,9 +503,7 @@ function countPoints($email){
 
 }
 
-function joinGroup(){
-
-    $userID = getUserID($_SESSION["email"]);
+function groupExists($groupName, $groupPassword){
 
     $db = new MySQLi(
         'ap-cdbr-azure-east-c.cloudapp.net', //server or host address
@@ -518,8 +516,6 @@ function joinGroup(){
         die('Connection failed:'.connect_error);
     }
     else{
-        $name = $_POST["groupName"];
-        $password = $_POST["groupPassword"];
 
         //select all values from database using the entered values as filter
         $query = "SELECT groupID
@@ -527,30 +523,38 @@ function joinGroup(){
 				  WHERE groupName = ?
 				  AND groupPassword = ?";
         $stmt = $db->prepare($query);
-        $stmt->bind_param("ss",$name,$password);
+        $stmt->bind_param("ss",$groupName,$groupPassword);
         $stmt->execute() or die("Error: ".$query."<br>".$db->error);
-        $stmt->bind_result($groupID);
-
-        echo "This is a group id: ".$groupID;
-
-        if($stmt->fetch()){	//if the sql query returns a value
-
-            $insert = "INSERT INTO ispartof (userID, groupID)
-                           VALUES ('".$userID."', '".$groupID."')";
-            $outcome = $db->query($insert) or die("Error: ".$insert."<br>".$db->error);
 
 
-            $db->close(); // Closing Connection
-
-            //header("Location: groups.php?Joined=Yes");
+        if(mysqli_stmt_fetch($stmt)){	//if the sql query returns a value
+            return TRUE; 	//indicate that a value was returned, and user exists in database
         }
         else{
-
-            $db->close(); // Closing Connection
-
-            //header("Location: joinGroup.php?Joined=No");
-
+            return FALSE; //indicate a value wasn't returned, and user doesn't exist in database
         }
+        $db->close(); // Closing Connection
+
+    }
+}
+
+function joinGroup($userID, $groupID){
+    $db = new MySQLi(
+        'ap-cdbr-azure-east-c.cloudapp.net', //server or host address
+        'b27f975a706fe7', //username for connecting to database
+        '078b0d65', //user's password
+        'meyerseuro16bets' //database being connected to
+    );
+
+    if($db->connect_errno){		//check if there was a connection error and respond accordingly
+        die('Connection failed:'.connect_error);
+    }
+    else{
+        $insert = "INSERT INTO ispartof (userID, groupID)
+                           VALUES ('".$userID."', '".$groupID."')";
+        $outcome = $db->query($insert) or die("Error: ".$insert."<br>".$db->error);
+
+        $db->close(); // Closing Connection
     }
 }
 
@@ -578,8 +582,31 @@ function getUserID($email){
 
         return $userID;
     }
+}
 
+function getGroupID($groupName){
+    $db = new MySQLi(
+        'ap-cdbr-azure-east-c.cloudapp.net', //server or host address
+        'b27f975a706fe7', //username for connecting to database
+        '078b0d65', //user's password
+        'meyerseuro16bets' //database being connected to
+    );
 
+    if($db->connect_errno){		//check if there was a connection error and respond accordingly
+        die('Connection failed:'.connect_error);
+    }
+    else{
+        $idQuery = "SELECT groupID
+                    FROM groups
+                    WHERE groupName='$groupName'";
+        $idResult = $db->query($idQuery) or die("Error: ".$idQuery."<br>".$db->error);
+        $idRow = $idResult->fetch_assoc(); //get the row out of the table
+        $groupID = $idRow['groupID'];  //There we have it
+
+        $db->close();
+
+        return $groupID;
+    }
 }
 
 function getFlag($id){

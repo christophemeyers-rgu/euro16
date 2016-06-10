@@ -13,16 +13,20 @@ if(!isset($_SESSION['email'])){
     header("Location: login.php");
 }
 
-if($_SERVER['REQUEST_METHOD']==='GET'){
+if($_SERVER['REQUEST_METHOD']==='POST'){	//Post is used when the form is submitted
 
-    $success = $_GET["Joined"];
-    if($success=="No"){
+    $groupName = $_POST["groupName"];
+    $groupPassword = $_POST["groupPassword"];
+    if(groupExists($groupName, $groupPassword)){
+        $userID = getUserID($_SESSION["email"]);
+        $groupID = getGroupID($groupName);
+        joinGroup($userID, $groupName);
+
+        header("Location: groups.php?Joined=Yes");
+    }
+    else{
         echo "<SCRIPT>alert('The entered Name-Password combination matches no groups.');</SCRIPT>";
     }
-}
-elseif($_SERVER['REQUEST_METHOD']==='POST'){	//Post is used when the form is submitted
-
-    joinGroup();
 
 }
 ?>
