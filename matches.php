@@ -87,13 +87,12 @@ unlockedForBetting();
             echo "Your current score is: ".$score;
             ?>
         </p>
+        <p>
+            Note: All times are in Central European Time.
+        </p>
         <form action="matches.php" method="post">
             <table>
-                <tr>
-                    <th>
-                        Central European Time
-                    </th>
-                </tr>
+
                 <?php
 
                 $matchesResult = getAllMatches();
