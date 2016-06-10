@@ -89,7 +89,11 @@ unlockedForBetting();
         </p>
         <form action="matches.php" method="post">
             <table>
-
+                <tr>
+                    <th>
+                        Central European Time
+                    </th>
+                </tr>
                 <?php
 
                 $matchesResult = getAllMatches();
