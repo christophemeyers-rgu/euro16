@@ -477,21 +477,24 @@ function countPoints($email){
 
                 $betsResult = $db->query($betsQuery) or die("Error: ".$betsQuery."<br>".$db->error);
 
-                $betsRow = $betsResult->fetch_assoc(); //get the row out of the table
+                if(mysqli_num_rows($betsResult)>0){
+                    $betsRow = $betsResult->fetch_assoc(); //get the row out of the table
 
-                $betsDiff = $betsRow["teamABet"] - $betsRow["teamBBet"];
+                    $betsDiff = $betsRow["teamABet"] - $betsRow["teamBBet"];
 
-                if($betsDiff==$scoreDiff){
-                    if($betsRow["teamABet"]==$scoreRow["teamAGoals"]) {
-                        $points += 3;
+                    if($betsDiff==$scoreDiff){
+                        if($betsRow["teamABet"]==$scoreRow["teamAGoals"]) {
+                            $points += 3;
+                        }
+                        else {
+                            $points += 2;
+                        }
                     }
-                    else {
-                        $points += 2;
+                    elseif(sign($betsDiff)==sign($scoreDiff)){
+                        $points += 1;
                     }
                 }
-                elseif(sign($betsDiff)==sign($scoreDiff)){
-                    $points += 1;
-                }
+
             }
         }
     }
