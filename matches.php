@@ -15,9 +15,9 @@ if(!isset($_SESSION['email'])){
 
 if($_SERVER['REQUEST_METHOD']==='POST'){	//Post is used when the form is submitted
 
-    foreach($_POST["betA"] as $x){
+    foreach($_POST["input"] as $input){
         //process invite
-        echo "{$x['betA']} - {$x['betB']} was bet for match of id {$x['matchID']}. <br />";
+        echo "{$input['betA']} - {$input['betB']} was bet for match of id {$input['matchID']}. <br />";
     }
 
 }
