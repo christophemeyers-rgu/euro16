@@ -497,6 +497,9 @@ function countPoints($email){
                     $points += 1;
                 }
 
+                echo "<SCRIPT>alert('Works with this many {$points}!');</SCRIPT>";
+
+
             }
         }
 
