@@ -365,6 +365,10 @@ function makeBets(){
 
         $userID = $idRow['userID'];  //There we have it
 
+        $deleteQuery = "DELETE FROM bets
+                        WHERE userID = $userID";
+
+        $deleteResult = $db->query($deleteQuery) or die("Error: ".$deleteQuery."<br>".$db->error);
 
         foreach($_POST["input"] as $input){
             //process invite
@@ -433,6 +437,71 @@ function unlockedForBetting(){
 
     $db->close();
 
+}
+
+function countPoints($email){
+
+    $points = 0;
+
+    $db = new MySQLi(
+        'ap-cdbr-azure-east-c.cloudapp.net', //server or host address
+        'b27f975a706fe7', //username for connecting to database
+        '078b0d65', //user's password
+        'meyerseuro16bets' //database being connected to
+    );
+
+    if($db->connect_errno){		//check if there was a connection error and respond accordingly
+        die('Connection failed:'.connect_error);
+    }
+    else{
+
+        $scoreQuery = "SELECT *
+                       FROM results";
+
+        $scoreResult = $db->query($scoreQuery) or die("Error: ".$scoreQuery."<br>".$db->error);
+
+
+        if(mysqli_num_rows($scoreResult)>0){
+            while($scoreRow=mysqli_fetch_array($scoreResult)){
+
+
+                $scoreDiff = $scoreRow["teamAGoals"] - $scoreRow["teamBGoals"];
+
+                $id = $scoreRow["matchID"];
+
+                $betsQuery = "SELECT *
+                              FROM bets
+                              WHERE matchID = $id
+                              AND userID= (SELECT userID
+                                           FROM users
+                                           WHERE email = '$email')";
+
+                $betsResult = $db->query($betsQuery) or die("Error: ".$betsQuery."<br>".$db->error);
+
+                $betsRow = $betsResult->fetch_assoc(); //get the row out of the table
+
+                $betsDiff = $betsRow["teamABets"] - $betsRow["teamBBets"];
+
+                if($betsDiff===$scoreDiff){
+                    if($betsRow["teamABets"]===$scoreRow["teamAGoals"]) {
+                        $points += 3;
+                    }
+                    else {
+                        $points += 2;
+                    }
+                }
+                elseif(gmp_sign($betsDiff)===gmp_sign($scoreDiff)){
+                    $points += 1;
+                }
+
+            }
+        }
+
+    }
+
+    $db->close();
+
+    return $points;
 }
 
 function getFlag($id){
