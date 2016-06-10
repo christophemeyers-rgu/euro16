@@ -117,7 +117,10 @@ unlockedForBetting();
                         $bets = getBets($matchesRow["matchID"],$_SESSION["email"]);
 
                         if($matchesRow["unlockedForBetting"] == FALSE){
-                            echo "{$matchesRow["matchID"]} is {$disabled}";
+                            $disabled = "disabled";
+                        }
+                        else{
+                            $disabled = "";
                         }
 
 
@@ -144,12 +147,12 @@ unlockedForBetting();
                                 if(isset($bets)){
                                     $betA = $bets["teamABet"];
                                     ?>
-                                    <input class="bet" type="number" name="input[<?php echo $counter; ?>][betA]" value="<?php echo $betA; ?>" <?php if($matchesRow["unlockedForBetting"]){echo 'disabled';} ?> >
+                                    <input class="bet" type="number" name="input[<?php echo $counter; ?>][betA]" value="<?php echo $betA; ?>" <?php echo $disabled; ?> >
                                     <?php
                                 }
                                 else{
                                     ?>
-                                    <input class="bet" type="number" name="input[<?php echo $counter; ?>][betA]" <?php if($matchesRow["unlockedForBetting"]){echo 'disabled';} ?> >
+                                    <input class="bet" type="number" name="input[<?php echo $counter; ?>][betA]" <?php echo $disabled; ?> >
                                     <?php
                                 }
                                 ?>
@@ -164,12 +167,12 @@ unlockedForBetting();
                                 if(isset($bets)){
                                     $betB = $bets["teamBBet"];
                                     ?>
-                                    <input class="bet" type="number" name="input[<?php echo $counter; ?>][betB]" value="<?php echo $betB; ?>" <?php if($matchesRow["unlockedForBetting"]){echo 'disabled';} ?> >
+                                    <input class="bet" type="number" name="input[<?php echo $counter; ?>][betB]" value="<?php echo $betB; ?>" <?php echo $disabled; ?> >
                                     <?php
                                 }
                                 else{
                                     ?>
-                                    <input class="bet" type="number" name="input[<?php echo $counter; ?>][betB]" <?php if($matchesRow["unlockedForBetting"]){echo 'disabled';} ?> >
+                                    <input class="bet" type="number" name="input[<?php echo $counter; ?>][betB]" <?php echo $disabled; ?> >
                                     <?php
                                 }
                                 ?>
