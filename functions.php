@@ -472,6 +472,8 @@ function countPoints($email){
 
                 $id = $scoreRow["matchID"];
 
+                echo "<SCRIPT>alert('Works after getting difference of score!');</SCRIPT>";
+
                 $betsQuery = "SELECT *
                               FROM bets
                               WHERE matchID = $id
@@ -484,6 +486,8 @@ function countPoints($email){
                 $betsRow = $betsResult->fetch_assoc(); //get the row out of the table
 
                 $betsDiff = $betsRow["teamABets"] - $betsRow["teamBBets"];
+
+                echo "<SCRIPT>alert('Works after getting difference of bets!');</SCRIPT>";
 
                 if($betsDiff===$scoreDiff){
                     if($betsRow["teamABets"]===$scoreRow["teamAGoals"]) {
