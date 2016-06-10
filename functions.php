@@ -462,8 +462,10 @@ function countPoints($email){
         $scoreResult = $db->query($scoreQuery) or die("Error: ".$scoreQuery."<br>".$db->error);
 
         if(mysqli_num_rows($scoreResult)>0){
+            echo "<SCRIPT>alert('Works 2!');</SCRIPT>";
+
             while($scoreRow=mysqli_fetch_array($scoreResult)){
-                echo "<SCRIPT>alert('Works 1!');</SCRIPT>";
+                echo "<SCRIPT>alert('Works in while loop!');</SCRIPT>";
 
 
                 $scoreDiff = $scoreRow["teamAGoals"] - $scoreRow["teamBGoals"];
