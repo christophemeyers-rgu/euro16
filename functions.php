@@ -531,6 +531,8 @@ function joinGroup(){
         $stmt->execute() or die("Error: ".$query."<br>".$db->error);
         $stmt->bind_result($groupID);
 
+        echo $groupID;
+
         if($stmt->fetch()){	//if the sql query returns a value
 
             $insert = "INSERT INTO ispartof (userID, groupID)
@@ -540,13 +542,13 @@ function joinGroup(){
 
             $db->close(); // Closing Connection
 
-            header("Location: groups.php?Joined=Yes");
+            //header("Location: groups.php?Joined=Yes");
         }
         else{
 
             $db->close(); // Closing Connection
 
-            header("Location: joinGroup.php?Joined=No");
+            //header("Location: joinGroup.php?Joined=No");
 
         }
     }
