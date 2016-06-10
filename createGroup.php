@@ -79,7 +79,7 @@ if($_SERVER['REQUEST_METHOD']==='POST'){	//Post is used when the form is submitt
 
     <div class="grid-100 tablet-grid-100 mobile-grid-100">
 
-        <form action="createGroup.php" method="post">
+        <form id="formID" action="createGroup.php" method="post">
             <table>
                 <tr>
                     <td>

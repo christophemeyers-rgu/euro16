@@ -52,7 +52,7 @@ elseif($_SERVER['REQUEST_METHOD']==='GET'){
 <body>
 
 
-<form id="login" action="createAccount.php" method="post">
+<form id="login" id="formID" action="createAccount.php" method="post">
     <input type="text" placeholder="Email Address" name="email" required>
     <br>
     <input type="password" placeholder="Password" name="password" required>

@@ -863,14 +863,24 @@ function sign( $number ) {
 
 <script>
     // When the user clicks on div, open the popup or redirect to createAccount.php
-function myFunction() {
-    var session = <?php echo json_encode($_SESSION['email']); ?>;
-if (typeof session !== 'undefined'){
-window.location.assign("http://meyerseuro16bets.azurewebsites.net/createAccount.php")
-}
-else{
-var popup = document.getElementById('myPopup');
-popup.classList.toggle('show');
-}
-}
+    function myFunction() {
+        var session = <?php echo json_encode($_SESSION['email']); ?>;
+    if (typeof session !== 'undefined'){
+    window.location.assign("http://meyerseuro16bets.azurewebsites.net/createAccount.php")
+    }
+    else{
+    var popup = document.getElementById('myPopup');
+    popup.classList.toggle('show');
+    }
+    }
+
+
+    var form = document.getElementById('formID'); // form has to have ID: <form id="formID">
+    form.noValidate = true;
+    form.addEventListener('submit', function(event) { // listen for form submitting
+        if (!event.target.checkValidity()) {
+            event.preventDefault(); // dismiss the default functionality
+            alert('Please, fill in the whole form.'); // error message
+        }
+    }, false);
 </script>
