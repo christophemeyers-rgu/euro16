@@ -89,6 +89,9 @@ header("Location: login.php");
             1 point: You correctly picked the winner of the match.
             <br>
             0 points: You got it all wrong or did not even bother to bet.
+            <br>
+            <br>
+            Note: A correctly guessed draw will award you two points, since you guessed the correct goal difference.
         </p>
 
         <h3>
