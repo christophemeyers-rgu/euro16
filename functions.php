@@ -483,9 +483,14 @@ function countPoints($email){
 
                 $betsResult = $db->query($betsQuery) or die("Error: ".$betsQuery."<br>".$db->error);
 
+                echo "<SCRIPT>alert('Works with this query {$betsQuery}!');</SCRIPT>";
+
                 $betsRow = $betsResult->fetch_assoc(); //get the row out of the table
 
                 $betsDiff = $betsRow["teamABets"] - $betsRow["teamBBets"];
+
+                echo "<SCRIPT>alert('Works with these bets {$betsRow["teamABets"]} - {$betsRow["teamBBets"]}!');</SCRIPT>";
+
 
                 echo "<SCRIPT>alert('Works after getting difference of bets as {$betsDiff}!');</SCRIPT>";
 
