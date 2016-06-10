@@ -8,6 +8,12 @@
 
 include("functions.php");
 
+session_start();
+if(!isset($_SESSION['email'])){
+    header("Location: login.php");
+}
+
+
 ?>
 
 <!DOCTYPE html>
@@ -83,6 +89,7 @@ include("functions.php");
                             $goalsB = "-";
                         }
 
+                        $bets = getBets($matchesRow["matchID"],$_SESSION["email"]);
 
                         ?>
 
@@ -103,7 +110,19 @@ include("functions.php");
                                 ?>
                             </td>
                             <td>
-                                <input class="bet" type="number" name="betA[<?php echo $counter; ?>]">
+                                <?php
+                                if(isset($bets)){
+                                    $betA = $bets["teamABet"];
+                                    ?>
+                                    <input class="bet" type="number" name="betA[<?php echo $counter; ?>]" value="<?php echo $betA; ?>">
+                                    <?php
+                                }
+                                else{
+                                    ?>
+                                    <input class="bet" type="number" name="betA[<?php echo $counter; ?>]">
+                                    <?php
+                                }
+                                ?>
                             </td>
                             <td>
                                 <?php
@@ -111,7 +130,19 @@ include("functions.php");
                                 ?>
                             </td>
                             <td>
-                                <input class="bet" type="number" name="betB[<?php echo $counter; ?>]">
+                                <?php
+                                if(isset($bets)){
+                                    $betB = $bets["teamBBet"];
+                                    ?>
+                                    <input class="bet" type="number" name="betB[<?php echo $counter; ?>]" value="<?php echo $betA; ?>">
+                                    <?php
+                                }
+                                else{
+                                    ?>
+                                    <input class="bet" type="number" name="betB[<?php echo $counter; ?>]">
+                                    <?php
+                                }
+                                ?>
                             </td>
                             <td>
                                 <?php
