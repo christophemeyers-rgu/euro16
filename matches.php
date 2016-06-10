@@ -37,6 +37,8 @@ elseif($_SERVER['REQUEST_METHOD']==='POST'){	//Post is used when the form is sub
 
 }
 
+unlockedForBetting();
+
 ?>
 
 <!DOCTYPE html>
