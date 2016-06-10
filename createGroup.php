@@ -15,9 +15,9 @@ if(!isset($_SESSION['email'])){
 
 if($_SERVER['REQUEST_METHOD']==='POST'){	//Post is used when the form is submitted
 
-    /*$groupName = $_POST["groupName"];
+    $groupName = $_POST["groupName"];
     $groupPassword = $_POST["groupPassword"];
-    if(groupExists($groupName, $groupPassword)){
+    if(createGroup($groupName,$groupPassword)){
         $userID = getUserID($_SESSION["email"]);
         $groupID = getGroupID($groupName);
         joinGroup($userID, $groupID);
@@ -25,8 +25,8 @@ if($_SERVER['REQUEST_METHOD']==='POST'){	//Post is used when the form is submitt
         header("Location: groups.php?Joined=Yes");
     }
     else{
-        echo "<SCRIPT>alert('The entered Name-Password combination matches no groups.');</SCRIPT>";
-    }*/
+        echo "<SCRIPT>alert('The entered group name has already been taken.');</SCRIPT>";
+    }
 
 }
 ?>

@@ -54,15 +54,11 @@ function createUser(){
             $firstname=$_POST['firstname'];
             $surname=$_POST['surname'];
             $password=$_POST['password'];
-            $score=0;
 
 
-            $insert="INSERT INTO users (email, password, firstname, surname, score)
-				VALUES('".$email."','".$password."','".$firstname."','".$surname."','".$score."')";
+            $insert="INSERT INTO users (email, password, firstname, surname)
+				VALUES('".$email."','".$password."','".$firstname."','".$surname."')";
 
-            /*$stmt = $db->prepare($insert);
-            $stmt->bind_param("s",$salt);
-            $stmt->execute() or die("Error: ".$insert."<br>".$db->error);*/
 
 
             $outcome=$db->query($insert) or die("Error: ".$insert."<br>".$db->error);
@@ -504,6 +500,68 @@ function countPoints($email){
     return $points;
 
 
+}
+
+function createGroup($groupName, $password){
+
+    $db = new MySQLi(
+        'ap-cdbr-azure-east-c.cloudapp.net', //server or host address
+        'b27f975a706fe7', //username for connecting to database
+        '078b0d65', //user's password
+        'meyerseuro16bets' //database being connected to
+    );
+
+    if($db->connect_errno){		//check if there was a connection error and respond accordingly
+        die('Connection failed:'.connect_error);
+    }
+    else{
+
+        //read input details from index.php
+
+        //create select statement to using firstname and surname as filters
+        $query="SELECT groupName
+				FROM groups
+				WHERE groupName ='$groupName'
+			    LIMIT 1";
+
+        //check to see that sql query executes properly, and return any errors
+        $output=$db->query($query) or die("Error: ".$query."<br>".$db->error);
+
+        $return=NULL;
+
+        //go through the array of results returned from the query if any
+        while($row = $output->fetch_assoc()) {
+            $return=$row["groupName"];//add the email value to the return variable
+        }
+
+        //if $return is no longer NULL, then it means user exists already
+        if(isset($return)){
+            $db->close();
+            return FALSE;
+        }
+        else{
+            //create user in database if they dont exists there already
+
+            $insert="INSERT INTO groups (groupName, groupPassword)
+				     VALUES(?,?)";
+
+            $stmt = $db->prepare($insert);
+            $stmt->bind_param("ss",$groupName,$password);
+            $stmt->execute() or die("Error: ".$insert."<br>".$db->error);
+
+            /*$stmt = $db->prepare($insert);
+            $stmt->bind_param("s",$salt);
+            $stmt->execute() or die("Error: ".$insert."<br>".$db->error);*/
+
+
+            $outcome=$db->query($insert) or die("Error: ".$insert."<br>".$db->error);
+
+            $db->close();
+
+            return TRUE;
+
+        }
+    }
 }
 
 function groupExists($groupName, $groupPassword){
