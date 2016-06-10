@@ -411,7 +411,7 @@ function unlockedForBetting(){
 
         $query = "SELECT matchID
                   FROM matches
-                  WHERE (HOUR(TIMEDIFF(NOW(), matchTime)) <= 48)";
+                  WHERE (HOUR(TIMEDIFF(NOW(), matchTime)) <= 1)";
 
         $result = $db->query($query) or die("Error: ".$query."<br>".$db->error);
 
