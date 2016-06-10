@@ -41,7 +41,7 @@ if(!isset($_SESSION['email'])){
                     <a href="groups.php" class="dropbtn">Groups</a>
                     <div class="dropdown-content">
                         <a href="#">Your Groups</a>
-                        <a href="#">Join a Group</a>
+                        <a href="joinGroup.php">Join a Group</a>
                         <a href="#">Create a Group</a>
                     </div>
                 </li>
