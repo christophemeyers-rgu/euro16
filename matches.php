@@ -20,18 +20,8 @@ if($_SERVER['REQUEST_METHOD']==='GET'){
     if($success=="Yes"){
         echo "<SCRIPT>alert('Bets were successfully updated!');</SCRIPT>";
     }
-    elseif($success=="No"){
-        echo "<script>alert('Why would you just enter *No* into the url?');</script>";
-    }
 }
 elseif($_SERVER['REQUEST_METHOD']==='POST'){	//Post is used when the form is submitted
-
-    /*foreach($_POST["input"] as $input){
-        //process invite
-        echo "{$input['betA']} - {$input['betB']} was bet for match of id {$input['matchID']}. <br />";
-
-
-    }*/
 
     makeBets();
 

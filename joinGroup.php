@@ -6,12 +6,25 @@
  * Time: 14:23
  */
 
+include("functions.php");
+
 session_start();
 if(!isset($_SESSION['email'])){
     header("Location: login.php");
 }
 
+if($_SERVER['REQUEST_METHOD']==='GET'){
 
+    $success = $_GET["Joined"];
+    if($success=="No"){
+        echo "<SCRIPT>alert('The entered Name-Password combination matches no groups.');</SCRIPT>";
+    }
+}
+elseif($_SERVER['REQUEST_METHOD']==='POST'){	//Post is used when the form is submitted
+
+    joinGroup();
+
+}
 ?>
 
 
@@ -63,7 +76,7 @@ if(!isset($_SESSION['email'])){
 
     <div class="grid-100 tablet-grid-100 mobile-grid-100">
 
-        <form action="groups.php" method="post">
+        <form action="joinGroup.php" method="post">
             <table>
                 <tr>
                     <td>

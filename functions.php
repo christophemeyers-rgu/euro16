@@ -503,6 +503,64 @@ function countPoints($email){
 
 }
 
+function joinGroup(){
+
+    $db = new MySQLi(
+        'ap-cdbr-azure-east-c.cloudapp.net', //server or host address
+        'b27f975a706fe7', //username for connecting to database
+        '078b0d65', //user's password
+        'meyerseuro16bets' //database being connected to
+    );
+
+    if($db->connect_errno){		//check if there was a connection error and respond accordingly
+        die('Connection failed:'.connect_error);
+    }
+    else{
+
+        $name = $_POST["groupName"];
+        $password = $_POST["groupPassword"];
+
+        //select all values from database using the entered values as filter
+        $query = "SELECT groupID
+				  FROM groups
+				  WHERE groupName = ?
+				  AND groupPassword = ?";
+        $stmt = $db->prepare($query);
+        $stmt->bind_param("ss",$name,$password);
+        $stmt->execute() or die("Error: ".$query."<br>".$db->error);
+        $stmt->bind_result($groupID);
+
+
+        if(mysqli_stmt_fetch($stmt)){	//if the sql query returns a value
+
+            $email = $_SESSION["email"];
+            $idQuery = "SELECT userID
+                    FROM users
+                    WHERE email='$email'";
+            $idResult = $db->query($idQuery) or die("Error: ".$idQuery."<br>".$db->error);
+            $idRow = $idResult->fetch_assoc(); //get the row out of the table
+            $userID = $idRow['userID'];  //There we have it
+
+
+            $insert = "INSERT INTO ispartof (userID, groupID)
+                           VALUES ('".$userID."', '".$groupID."')";
+            $outcome = $db->query($insert) or die("Error: ".$insert."<br>".$db->error);
+
+
+            $db->close(); // Closing Connection
+
+            header("Location: groups.php?Joined=Yes");
+        }
+        else{
+
+            $db->close(); // Closing Connection
+
+            header("Location: joinGroup.php?Joined=No");
+
+        }
+    }
+}
+
 function getFlag($id){
 
     if($id==1){
