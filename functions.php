@@ -549,13 +549,6 @@ function createGroup($groupName, $password){
             $stmt->bind_param("ss",$groupName,$password);
             $stmt->execute() or die("Error: ".$insert."<br>".$db->error);
 
-            /*$stmt = $db->prepare($insert);
-            $stmt->bind_param("s",$salt);
-            $stmt->execute() or die("Error: ".$insert."<br>".$db->error);*/
-
-
-            $outcome=$db->query($insert) or die("Error: ".$insert."<br>".$db->error);
-
             $db->close();
 
             return TRUE;
