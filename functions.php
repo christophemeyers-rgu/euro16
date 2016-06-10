@@ -32,21 +32,29 @@ function createUser(){
         //create select statement to using firstname and surname as filters
         $query="SELECT email
 				FROM users
-				WHERE email ='$email'
+				WHERE email =?
 			    LIMIT 1";
 
-        //check to see that sql query executes properly, and return any errors
-        $output=$db->query($query) or die("Error: ".$query."<br>".$db->error);
+        $stmt = $db->prepare($query);
+        $stmt->bind_param("s",$email);
+        $stmt->execute() or die("Error: ".$query."<br>".$db->error);
 
-        $return=NULL;
+        //check to see that sql query executes properly, and return any errors
+        //$output=$db->query($query) or die("Error: ".$query."<br>".$db->error);
+
+        //$return=NULL;
 
         //go through the array of results returned from the query if any
-        while($row = $output->fetch_assoc()) {
+        /*while($row = $output->fetch_assoc()) {
             $return=$row["email"];//add the email value to the return variable
         }
 
         //if $return is no longer NULL, then it means user exists already
         if(isset($return)){
+            header("Location: createAccount.php?Success=No");
+        }
+        else{*/
+        if(mysqli_stmt_fetch($stmt)) {
             header("Location: createAccount.php?Success=No");
         }
         else{
@@ -57,17 +65,21 @@ function createUser(){
 
 
             $insert="INSERT INTO users (email, password, firstname, surname)
-				VALUES('".$email."','".$password."','".$firstname."','".$surname."')";
+				VALUES(?,?,?,?)";
+
+            $stmt = $db->prepare($insert);
+            $stmt->bind_param("ssss",$email,$password, $firstname, $surname);
+            $stmt->execute() or die("Error: ".$insert."<br>".$db->error);
+
+            $db->close();
 
 
-
-            $outcome=$db->query($insert) or die("Error: ".$insert."<br>".$db->error);
+            //$outcome=$db->query($insert) or die("Error: ".$insert."<br>".$db->error);
 
             header("Location: login.php?Success=Yes");
 
             emailRegisteredUser();//call the function "emailRegisteredUser()"
 
-            $db->close();
         }
     }
 }
