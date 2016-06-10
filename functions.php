@@ -531,10 +531,7 @@ function joinGroup(){
         $stmt->execute() or die("Error: ".$query."<br>".$db->error);
         $stmt->bind_result($groupID);
 
-        echo $query;
-        echo $groupID;
-
-        if(isset($groupID)){	//if the sql query returns a value
+        if($stmt->fetch()){	//if the sql query returns a value
 
             $insert = "INSERT INTO ispartof (userID, groupID)
                            VALUES ('".$userID."', '".$groupID."')";
