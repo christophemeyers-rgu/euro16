@@ -104,8 +104,55 @@ function emailRegisteredUser(){
 					<br><br>
 					This is to confirm your registration for the Meyers' Euro16 Bets system.
 					<br><br>
-                    This is the explanation of the rules.
+                    This is the explanation of the rules:
 					<br><br>
+					<h3>
+            Placing bets:
+        </h3>
+
+        <p>
+            Under \"Matches\", you can change your bets for each of the known matches as many times as you want.
+            <br>
+            Bets close for each match separately 1 hour before kickoff.
+        </p>
+
+        <h3>
+            Points system:
+        </h3>
+
+        <p>
+            Once the match score is updated, you will be rewarded points for each bet you made:
+            <br>
+            <br>
+            3 points: You guessed the exact score!
+            <br>
+            2 points: You correctly guessed the goal difference.
+            <br>
+            1 point: You correctly picked the winner of the match.
+            <br>
+            0 points: You got it all wrong or did not even bother to bet.
+            <br>
+            <br>
+            Note: A correctly guessed draw will award you two points, since you guessed the correct goal difference.
+        </p>
+
+        <h3>
+            Groups:
+        </h3>
+
+        <p>
+            You can join multiple groups to compare points with your friends.
+        </p>
+
+        <h3>
+            Bugs or questions:
+        </h3>
+
+        <p>
+            Please talk to me, I will look to fix things as quickly as convenient.
+        </p>
+        <br>
+        <br>
 					Best of luck,
 					<br><br>
 					Meyers' Euro16 Bets Team
