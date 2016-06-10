@@ -67,6 +67,74 @@ if($_SERVER['REQUEST_METHOD']==='GET'){
     <div class="grid-100 tablet-grid-100 mobile-grid-100">
 
 
+            <?php
+
+            $userID = getUserID($_SESSION["email"]);
+            $groupsResult = getMyGroups($userID);
+
+            if(mysqli_num_rows($groupsResult)>0){
+
+
+
+                while($groupsRow = mysqli_fetch_array($groupsResult)){
+
+                    $groupID = $groupsRow["groupID"];
+
+                    $groupName = getGroupName($groupID);
+
+                    ?>
+
+                    <h3>
+                        <?php
+                        echo $groupName;
+                        ?>
+                    </h3>
+
+                    <table>
+                        <tr>
+                            <th>
+                                Name
+                            </th>
+                            <th>
+                                Points
+                            </th>
+                        </tr>
+                        <?php
+
+                        $membersResult = getGroupMembers($groupID);
+
+                        if(mysqli_num_rows($membersResult)>0){
+
+                            while($membersRow = mysqli_fetch_array($membersResult)){
+
+                                ?>
+                                <tr>
+                                    <td>
+                                        <?php
+                                        echo $membersRow["firstname"]." ".$membersRow["surname"];
+                                        ?>
+                                    </td>
+                                    <td>
+                                        <?php
+                                        echo countPoints($membersRow["email"]);
+                                        ?>
+                                    </td>
+                                </tr>
+                                <?php
+
+                            }
+                        }
+                        ?>
+                    </table>
+
+                    <?php
+
+                }
+            }
+            ?>
+
+
+
 
     </div>
 

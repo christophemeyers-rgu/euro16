@@ -558,6 +558,79 @@ function joinGroup($userID, $groupID){
     }
 }
 
+function getMyGroups($userID){
+
+    $db = new MySQLi(
+        'ap-cdbr-azure-east-c.cloudapp.net', //server or host address
+        'b27f975a706fe7', //username for connecting to database
+        '078b0d65', //user's password
+        'meyerseuro16bets' //database being connected to
+    );
+
+    if($db->connect_errno){		//check if there was a connection error and respond accordingly
+        die('Connection failed:'.connect_error);
+    }
+    else{
+        $idQuery = "SELECT groupID
+                    FROM ispartof
+                    WHERE userID='$userID'";
+        $idResult = $db->query($idQuery) or die("Error: ".$idQuery."<br>".$db->error);
+
+        $db->close();
+
+        return $idResult;
+    }
+}
+
+function getGroupMembers($groupID){
+
+    $db = new MySQLi(
+        'ap-cdbr-azure-east-c.cloudapp.net', //server or host address
+        'b27f975a706fe7', //username for connecting to database
+        '078b0d65', //user's password
+        'meyerseuro16bets' //database being connected to
+    );
+
+    if($db->connect_errno){		//check if there was a connection error and respond accordingly
+        die('Connection failed:'.connect_error);
+    }
+    else{
+        $idQuery = "SELECT userID
+                    FROM ispartof
+                    WHERE groupID='$groupID'";
+        $idResult = $db->query($idQuery) or die("Error: ".$idQuery."<br>".$db->error);
+
+        $db->close();
+
+        return $idResult;
+    }
+}
+
+function getGroupName($groupID){
+
+    $db = new MySQLi(
+        'ap-cdbr-azure-east-c.cloudapp.net', //server or host address
+        'b27f975a706fe7', //username for connecting to database
+        '078b0d65', //user's password
+        'meyerseuro16bets' //database being connected to
+    );
+
+    if($db->connect_errno){		//check if there was a connection error and respond accordingly
+        die('Connection failed:'.connect_error);
+    }
+    else{
+        $nameQuery = "SELECT groupName
+                    FROM groups
+                    WHERE groupID='$groupID'";
+        $nameResult = $db->query($nameQuery) or die("Error: ".$nameQuery."<br>".$db->error);
+        $nameRow = $nameResult->fetch_assoc(); //get the row out of the table
+        $groupName = $nameRow['groupName'];  //There we have it
+        $db->close();
+
+        return $groupName;
+    }
+}
+
 function getUserID($email){
 
     $db = new MySQLi(
