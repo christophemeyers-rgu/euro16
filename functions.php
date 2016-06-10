@@ -490,7 +490,11 @@ function countPoints($email){
                 echo "<SCRIPT>alert('Works after getting difference of bets!');</SCRIPT>";
 
                 if($betsDiff===$scoreDiff){
+                    echo "<SCRIPT>alert('Works with right difference!');</SCRIPT>";
+
                     if($betsRow["teamABets"]===$scoreRow["teamAGoals"]) {
+                        echo "<SCRIPT>alert('Works with exact score!');</SCRIPT>";
+
                         $points += 3;
                     }
                     else {
@@ -498,6 +502,8 @@ function countPoints($email){
                     }
                 }
                 elseif(gmp_sign($betsDiff)===gmp_sign($scoreDiff)){
+                    echo "<SCRIPT>alert('Works with right sign!');</SCRIPT>";
+
                     $points += 1;
                 }
 
