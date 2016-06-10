@@ -20,7 +20,7 @@ if($_SERVER['REQUEST_METHOD']==='POST'){	//Post is used when the form is submitt
     if(groupExists($groupName, $groupPassword)){
         $userID = getUserID($_SESSION["email"]);
         $groupID = getGroupID($groupName);
-        joinGroup($userID, $groupName);
+        joinGroup($userID, $groupID);
 
         header("Location: groups.php?Joined=Yes");
     }
