@@ -489,7 +489,7 @@ function countPoints($email){
 
                 $betsRow = $betsResult->fetch_assoc(); //get the row out of the table
 
-                $betsDiff = $betsRow["teamABets"] - $betsRow["teamBBets"];
+                $betsDiff = $betsRow["teamABet"] - $betsRow["teamBBet"];
 
                 echo "<SCRIPT>alert('Works with these bets {$betsRow["teamABets"]} - {$betsRow["teamBBets"]}!');</SCRIPT>";
 
