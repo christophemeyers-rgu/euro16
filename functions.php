@@ -316,12 +316,14 @@ function getBets($matchID,$userEmail){
         die('Connectfailed['.$db->connect_error.']');   //if connection fails, return error
     }
 
+
+
     $betQuery = "SELECT *
                  FROM bets
                  WHERE matchID=$matchID
                  AND userID= (SELECT userID
                               FROM users
-                              WHERE email = $userEmail)";
+                              WHERE email = '$userEmail')";
 
     $result = $db->query($betQuery) or die("Error: ".$betQuery."<br>".$db->error);
 
