@@ -454,7 +454,6 @@ function countPoints($email){
         die('Connection failed:'.connect_error);
     }
     else{
-        echo "<SCRIPT>alert('Works 1!');</SCRIPT>";
 
         $scoreQuery = "SELECT *
                        FROM results";
@@ -462,17 +461,12 @@ function countPoints($email){
         $scoreResult = $db->query($scoreQuery) or die("Error: ".$scoreQuery."<br>".$db->error);
 
         if(mysqli_num_rows($scoreResult)>0){
-            echo "<SCRIPT>alert('Works 2!');</SCRIPT>";
 
             while($scoreRow=mysqli_fetch_array($scoreResult)){
-                echo "<SCRIPT>alert('Works in while loop!');</SCRIPT>";
-
 
                 $scoreDiff = $scoreRow["teamAGoals"] - $scoreRow["teamBGoals"];
 
                 $id = $scoreRow["matchID"];
-
-                echo "<SCRIPT>alert('Works after getting difference of score as {$scoreDiff}!');</SCRIPT>";
 
                 $betsQuery = "SELECT *
                               FROM bets
@@ -483,44 +477,23 @@ function countPoints($email){
 
                 $betsResult = $db->query($betsQuery) or die("Error: ".$betsQuery."<br>".$db->error);
 
-                echo $betsQuery;
-
-                echo "<SCRIPT>alert('Works with this email {$email}!');</SCRIPT>";
-
                 $betsRow = $betsResult->fetch_assoc(); //get the row out of the table
 
                 $betsDiff = $betsRow["teamABet"] - $betsRow["teamBBet"];
 
-                echo "<SCRIPT>alert('Works with these bets {$betsRow["teamABets"]} - {$betsRow["teamBBets"]}!');</SCRIPT>";
-
-
-                echo "<SCRIPT>alert('Works after getting difference of bets as {$betsDiff}!');</SCRIPT>";
-
                 if($betsDiff==$scoreDiff){
-                    echo "<SCRIPT>alert('Works with right difference!');</SCRIPT>";
-
-                    if($betsRow["teamABets"]==$scoreRow["teamAGoals"]) {
-                        echo "<SCRIPT>alert('Works with exact score!');</SCRIPT>";
-
+                    if($betsRow["teamABet"]==$scoreRow["teamAGoals"]) {
                         $points += 3;
-
                     }
                     else {
                         $points += 2;
                     }
                 }
                 elseif(sign($betsDiff)==sign($scoreDiff)){
-                    echo "<SCRIPT>alert('Works with right sign!');</SCRIPT>";
-
                     $points += 1;
                 }
-
-                echo "<SCRIPT>alert('Works with this many {$points}!');</SCRIPT>";
-
-
             }
         }
-
     }
 
     $db->close();
