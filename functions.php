@@ -531,7 +531,7 @@ function joinGroup(){
         $stmt->execute() or die("Error: ".$query."<br>".$db->error);
         $stmt->bind_result($groupID);
 
-        echo $groupID;
+        echo "This is a group id: ".$groupID;
 
         if($stmt->fetch()){	//if the sql query returns a value
 
