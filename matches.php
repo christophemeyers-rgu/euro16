@@ -104,98 +104,101 @@ unlockedForBetting();
 
                     while($matchesRow = mysqli_fetch_array($matchesResult)){
 
-                        $counter++;
+                        if($matchesRow["matchID"]!=171){
+                            $counter++;
 
-                        $nationA = getNation($matchesRow["nationIDA"]);
-                        $nationB = getNation($matchesRow["nationIDB"]);
+                            $nationA = getNation($matchesRow["nationIDA"]);
+                            $nationB = getNation($matchesRow["nationIDB"]);
 
-                        $results = getResult($matchesRow["matchID"]);
-                        if(isset($results)){
-                            $goalsA = $results["teamAGoals"];
-                            $goalsB = $results["teamBGoals"];
-                        }
-                        else{
-                            $goalsA = "-";
-                            $goalsB = "-";
-                        }
+                            $results = getResult($matchesRow["matchID"]);
+                            if(isset($results)){
+                                $goalsA = $results["teamAGoals"];
+                                $goalsB = $results["teamBGoals"];
+                            }
+                            else{
+                                $goalsA = "-";
+                                $goalsB = "-";
+                            }
 
-                        $bets = getBets($matchesRow["matchID"],$_SESSION["email"]);
+                            $bets = getBets($matchesRow["matchID"],$_SESSION["email"]);
 
-                        if($matchesRow["unlockedForBetting"] == FALSE){
-                            $disabled = "readonly";
-                        }
-                        else{
-                            $disabled = "";
-                        }
+                            if($matchesRow["unlockedForBetting"] == FALSE){
+                                $disabled = "readonly";
+                            }
+                            else{
+                                $disabled = "";
+                            }
 
 
-                        ?>
+                            ?>
 
-                        <tr>
-                            <td>
-                                <?php
-                                echo $matchesRow["matchTime"];
-                                ?>
-                            </td>
-                            <td style="float: right">
-                                <?php
-                                echo $nationA["nationName"];
-                                ?>
-                            </td>
-                            <td style="text-align: right">
-                                <?php
-                                getFlag($nationA["nationID"]);
-                                ?>
-                            </td>
-                            <td>
-                                <?php
-                                if(isset($bets)){
-                                    $betA = $bets["teamABet"];
-                                    ?>
-                                    <input class="bet" type="number" name="input[<?php echo $counter; ?>][betA]" value="<?php echo $betA; ?>" <?php echo $disabled; ?> >
+                            <tr>
+                                <td>
                                     <?php
-                                }
-                                else{
+                                    echo $matchesRow["matchTime"];
                                     ?>
-                                    <input class="bet" type="number" name="input[<?php echo $counter; ?>][betA]" <?php echo $disabled; ?> >
+                                </td>
+                                <td style="float: right">
                                     <?php
-                                }
-                                ?>
-                            </td>
-                            <td>
-                                <?php
-                                echo $goalsA.":".$goalsB;
-                                ?>
-                            </td>
-                            <td>
-                                <?php
-                                if(isset($bets)){
-                                    $betB = $bets["teamBBet"];
+                                    echo $nationA["nationName"];
                                     ?>
-                                    <input class="bet" type="number" name="input[<?php echo $counter; ?>][betB]" value="<?php echo $betB; ?>" <?php echo $disabled; ?> >
+                                </td>
+                                <td style="text-align: right">
                                     <?php
-                                }
-                                else{
+                                    getFlag($nationA["nationID"]);
                                     ?>
-                                    <input class="bet" type="number" name="input[<?php echo $counter; ?>][betB]" <?php echo $disabled; ?> >
+                                </td>
+                                <td>
                                     <?php
-                                }
-                                ?>
-                            </td>
-                            <td>
-                                <?php
-                                getFlag($nationB["nationID"]);
-                                ?>
-                            </td>
-                            <td>
-                                <?php
-                                echo $nationB["nationName"];
-                                ?>
-                            </td>
+                                    if(isset($bets)){
+                                        $betA = $bets["teamABet"];
+                                        ?>
+                                        <input class="bet" type="number" min="0" name="input[<?php echo $counter; ?>][betA]" value="<?php echo $betA; ?>" <?php echo $disabled; ?> >
+                                        <?php
+                                    }
+                                    else{
+                                        ?>
+                                        <input class="bet" type="number" min="0" name="input[<?php echo $counter; ?>][betA]" <?php echo $disabled; ?> >
+                                        <?php
+                                    }
+                                    ?>
+                                </td>
+                                <td>
+                                    <?php
+                                    echo $goalsA.":".$goalsB;
+                                    ?>
+                                </td>
+                                <td>
+                                    <?php
+                                    if(isset($bets)){
+                                        $betB = $bets["teamBBet"];
+                                        ?>
+                                        <input class="bet" type="number" min="0" name="input[<?php echo $counter; ?>][betB]" value="<?php echo $betB; ?>" <?php echo $disabled; ?> >
+                                        <?php
+                                    }
+                                    else{
+                                        ?>
+                                        <input class="bet" type="number" min="0" name="input[<?php echo $counter; ?>][betB]" <?php echo $disabled; ?> >
+                                        <?php
+                                    }
+                                    ?>
+                                </td>
+                                <td>
+                                    <?php
+                                    getFlag($nationB["nationID"]);
+                                    ?>
+                                </td>
+                                <td>
+                                    <?php
+                                    echo $nationB["nationName"];
+                                    ?>
+                                </td>
 
-                        </tr>
-                        <input hidden type="number" value="<?php echo $matchesRow["matchID"]; ?>" name="input[<?php echo $counter; ?>][matchID]">
-                        <?php
+                            </tr>
+                            <input hidden type="number" value="<?php echo $matchesRow["matchID"]; ?>" name="input[<?php echo $counter; ?>][matchID]">
+                            <?php
+                        }
+
                     }
                 }
                 ?>
