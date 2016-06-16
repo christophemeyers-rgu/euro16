@@ -553,12 +553,33 @@ function countPoints($email){
             }
         }
     }
-
     $db->close();
 
+    updatePoints($email, $points);
+
     return $points;
+}
 
+function updatePoints($email, $points){
 
+    $db = new MySQLi(
+        'ap-cdbr-azure-east-c.cloudapp.net', //server or host address
+        'b27f975a706fe7', //username for connecting to database
+        '078b0d65', //user's password
+        'meyerseuro16bets' //database being connected to
+    );
+
+    if($db->connect_errno){		//check if there was a connection error and respond accordingly
+        die('Connection failed:'.connect_error);
+    }
+    else{
+        $query = "UPDATE users
+                  SET score=$points
+                  WHERE email='$email'";
+
+        $db->query($query) or die("Error: ".$query."<br>".$db->error);
+        $db->close();
+    }
 }
 
 function createGroup($groupName, $password){
