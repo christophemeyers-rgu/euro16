@@ -117,9 +117,11 @@ if($_SERVER['REQUEST_METHOD']==='GET'){
                                 ?>
                                 <tr>
                                     <td>
-                                        <?php
-                                        getUserName(getUserEmail($membersRow["userID"]));
-                                        ?>
+                                        <a href="opponentBets.php?Opponent=<?php echo $membersRow["userID"];?>">
+                                            <?php
+                                            getUserName(getUserEmail($membersRow["userID"]));
+                                            ?>
+                                        </a>
                                     </td>
                                     <td>
                                         <?php

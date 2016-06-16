@@ -719,6 +719,40 @@ function getGroupMembers($groupID){
     }
 }
 
+function partOfSameGroup($groupID, $userID){
+
+    $db = new MySQLi(
+        'ap-cdbr-azure-east-c.cloudapp.net', //server or host address
+        'b27f975a706fe7', //username for connecting to database
+        '078b0d65', //user's password
+        'meyerseuro16bets' //database being connected to
+    );
+
+    if($db->connect_errno){		//check if there was a connection error and respond accordingly
+        die('Connection failed:'.connect_error);
+    }
+    else{
+        $commonQuery = "SELECT *
+                        FROM ispartof
+                        WHERE groupID=$groupID
+                        AND userID='$userID'";
+
+        $commonResult = $db->query($commonQuery) or die("Error: ".$commonQuery."<br>".$db->error);
+
+        if(mysqli_num_rows($commonResult)>0){
+            $db->close();
+
+            return TRUE;
+        }
+        else{
+            $db->close();
+
+            return FALSE;
+        }
+
+    }
+}
+
 function getUserEmail($userID){
 
     $db = new MySQLi(
