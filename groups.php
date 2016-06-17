@@ -122,12 +122,15 @@ if($_SERVER['REQUEST_METHOD']==='GET'){
 
                             }
 
+                            var_dump($membersArray);
+
+
                             foreach($membersArray as $key => $row){
                                 $ID[$key] = $row['ID'];
                                 $score[$key] = $row['score'];
                             }
 
-                            array_multisort($score, SORT_DESC, $membersArray);
+                            array_multisort($score, SORT_DESC, $ID, SORT_ASC, $membersArray);
 
                             for($i=0; $i<$counter; $i++){
                                 ?>
