@@ -116,7 +116,9 @@ if($_SERVER['REQUEST_METHOD']==='GET'){
 
                                 $counter++;
 
-                                $membersArray[] = array('ID' => $membersRow["userID"], 'score' => countPoints(getUserEmail($membersRow["userID"])));
+                                $x = $membersRow["userID"];
+                                $y = countPoints(getUserEmail($membersRow["userID"]));
+                                $membersArray[] = array('ID' => $x, 'score' => $y);
 
                             }
 
