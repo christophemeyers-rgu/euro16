@@ -116,22 +116,27 @@ if($_SERVER['REQUEST_METHOD']==='GET'){
 
                         if(mysqli_num_rows($membersResult)>0){
 
-                            while($membersRow = mysqli_fetch_array($membersResult)){
+                            while($membersRow = mysqli_fetch_array($membersResult)) {
 
-                                foreach($usersArray as $x){
-                                    if($membersRow["userID"]==$x){
+                                $membersArray[] = $membersRow["userID"];
+
+                            }
+
+                            foreach($usersArray as $x){
+                                foreach($membersArray as $y){
+                                    if($y==$x){
                                         ?>
                                         <tr>
                                             <td>
-                                                <a href="opponentBets.php?Opponent=<?php echo $membersRow["userID"];?>">
+                                                <a href="opponentBets.php?Opponent=<?php echo $x;?>">
                                                     <?php
-                                                    getUserName(getUserEmail($membersRow["userID"]));
+                                                    getUserName(getUserEmail($x));
                                                     ?>
                                                 </a>
                                             </td>
                                             <td>
                                                 <?php
-                                                echo countPoints(getUserEmail($membersRow["userID"]));
+                                                echo countPoints(getUserEmail($x));
                                                 ?>
                                             </td>
                                         </tr>
@@ -139,6 +144,7 @@ if($_SERVER['REQUEST_METHOD']==='GET'){
                                     }
                                 }
                             }
+                            unset($membersArray);
                         }
                         ?>
                     </table>
