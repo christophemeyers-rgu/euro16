@@ -74,19 +74,25 @@ if($_SERVER['REQUEST_METHOD']==='GET'){
 
             <?php
 
+            //Get all users ordered by score in an array
+            $usersResult = getAllUsersByScore();
+
+            if(mysqli_num_rows($usersResult)>0){
+                while($usersRow = mysqli_fetch_array($usersResult)){
+                    $usersArray[] = $usersRow["userID"];
+                }
+            }
+
+
+
             $userID = getUserID($_SESSION["email"]);
             $groupsResult = getMyGroups($userID);
 
             if(mysqli_num_rows($groupsResult)>0){
-
-
-
                 while($groupsRow = mysqli_fetch_array($groupsResult)){
 
                     $groupID = $groupsRow["groupID"];
-
                     $groupName = getGroupName($groupID);
-
                     ?>
 
                     <h3>
@@ -110,51 +116,32 @@ if($_SERVER['REQUEST_METHOD']==='GET'){
 
                         if(mysqli_num_rows($membersResult)>0){
 
-                            $counter = 0;
-
                             while($membersRow = mysqli_fetch_array($membersResult)){
 
-                                $counter++;
-
-                                $x = $membersRow["userID"];
-                                $y = countPoints(getUserEmail($membersRow["userID"]));
-                                $membersArray[] = array('ID' => $x, 'score' => $y);
-
-                            }
-
-                            var_dump($membersArray);
-
-
-                            foreach($membersArray as $key => $row){
-                                $ID[$key] = $row['ID'];
-                                $score[$key] = $row['score'];
-                            }
-
-                            array_multisort($score, SORT_DESC, $ID, SORT_ASC, $membersArray);
-
-                            for($i=0; $i<$counter; $i++){
-                                ?>
-                                <tr>
-                                    <td>
-                                        <a href="opponentBets.php?Opponent=<?php echo $membersRow["userID"];?>">
-                                            <?php
-                                            getUserName(getUserEmail($membersArray[$i][0]));
-                                            ?>
-                                        </a>
-                                    </td>
-                                    <td>
-                                        <?php
-                                        echo $membersArray[$i][1];
+                                foreach($usersArray as $x){
+                                    if($membersRow["userID"]==$x){
                                         ?>
-                                    </td>
-                                </tr>
-                                <?php
+                                        <tr>
+                                            <td>
+                                                <a href="opponentBets.php?Opponent=<?php echo $membersRow["userID"];?>">
+                                                    <?php
+                                                    getUserName(getUserEmail($membersRow["userID"]));
+                                                    ?>
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <?php
+                                                echo countPoints(getUserEmail($membersRow["userID"]));
+                                                ?>
+                                            </td>
+                                        </tr>
+                                        <?php
+                                    }
+                                }
                             }
-                            unset($membersArray);
                         }
                         ?>
                     </table>
-
                     <?php
 
                 }
