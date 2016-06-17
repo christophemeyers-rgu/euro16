@@ -98,10 +98,10 @@ if($_SERVER['REQUEST_METHOD']==='GET'){
                     <table>
                         <tr>
                             <th>
-                                Name
+                                Points
                             </th>
                             <th>
-                                Points
+                                Name
                             </th>
                         </tr>
                         <?php
@@ -131,16 +131,16 @@ if($_SERVER['REQUEST_METHOD']==='GET'){
                                 ?>
                                 <tr>
                                     <td>
+                                        <?php
+                                        echo $membersArray[$i][1];
+                                        ?>
+                                    </td>
+                                    <td>
                                         <a href="opponentBets.php?Opponent=<?php echo $membersRow["userID"];?>">
                                             <?php
                                             getUserName(getUserEmail($membersArray[$i][0]));
                                             ?>
                                         </a>
-                                    </td>
-                                    <td>
-                                        <?php
-                                        echo $membersArray[$i][1];
-                                        ?>
                                     </td>
                                 </tr>
                                 <?php
