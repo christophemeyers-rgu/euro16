@@ -110,27 +110,40 @@ if($_SERVER['REQUEST_METHOD']==='GET'){
 
                         if(mysqli_num_rows($membersResult)>0){
 
+                            $counter = 0;
+
                             while($membersRow = mysqli_fetch_array($membersResult)){
 
+                                $counter++;
 
+                                $membersArray[] = array('ID' => $membersRow["userID"], 'score' => countPoints(getUserEmail($membersRow["userID"])));
 
+                            }
+
+                            foreach($membersArray as $key => $row){
+                                $ID[$key] = $row['ID'];
+                                $score[$key] = $row['score'];
+                            }
+
+                            array_multisort($score, SORT_DESC, $membersArray);
+
+                            for($i=0; $i<$counter; $i++){
                                 ?>
                                 <tr>
                                     <td>
                                         <a href="opponentBets.php?Opponent=<?php echo $membersRow["userID"];?>">
                                             <?php
-                                            getUserName(getUserEmail($membersRow["userID"]));
+                                            getUserName(getUserEmail($membersArray[$i][0]));
                                             ?>
                                         </a>
                                     </td>
                                     <td>
                                         <?php
-                                        echo countPoints(getUserEmail($membersRow["userID"]));
+                                        echo $membersArray[$i][1];
                                         ?>
                                     </td>
                                 </tr>
                                 <?php
-
                             }
                         }
                         ?>
